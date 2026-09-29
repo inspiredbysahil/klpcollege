@@ -6,7 +6,7 @@ import { noticeCategories, notices, officialLinks } from '@/lib/college';
 import { seo } from '@/lib/seo';
 
 export const Route = createFileRoute('/notices')({
-  validateSearch: (s: Record<string, unknown>): { q?: string; category?: string } => ({
+  validateSearch: (s: Record<string, unknown>): { q?: string | undefined; category?: string | undefined } => ({
     q: typeof s.q === 'string' && s.q ? s.q : undefined,
     category: typeof s.category === 'string' && s.category ? s.category : undefined,
   }),
