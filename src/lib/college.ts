@@ -38,3 +38,30 @@ export const officialLinks = {
   notices: 'https://www.klpcollege.ac.in/page/noticesannouncements',
   fees: 'https://www.klpcollege.ac.in/page/fee-structure-for-the-session-2025-26',
 };
+
+export const siteUrl = 'https://klpcollege.lovable.app';
+
+export const programmeRules = {
+  source: 'https://www.klpcollege.ac.in/page/programmes-at-a-glance',
+  items: [
+    'Internal assessment and promotion to the next semester follow IGU Meerpur, Rewari guidelines.',
+    'Students must attend not less than 75% of lectures delivered in theory as well as practical to appear in university examinations.',
+  ],
+};
+
+export type Programme = { slug: string; name: string; level: 'Undergraduate' | 'Postgraduate'; stream: string };
+
+export const programmes: Programme[] = [
+  { slug: 'ba', name: 'B.A. (Bachelor of Arts)', level: 'Undergraduate', stream: 'Arts & Humanities' },
+  { slug: 'ba-jmc', name: 'B.A. (Journalism & Mass Communication)', level: 'Undergraduate', stream: 'Arts & Humanities' },
+  { slug: 'ma-geography', name: 'M.A. (Geography)', level: 'Postgraduate', stream: 'Arts & Humanities' },
+  { slug: 'bcom', name: 'B.Com.', level: 'Undergraduate', stream: 'Commerce & Management' },
+  { slug: 'bcom-hons', name: 'B.Com. (Hons)', level: 'Undergraduate', stream: 'Commerce & Management' },
+  { slug: 'bba', name: 'BBA', level: 'Undergraduate', stream: 'Commerce & Management' },
+  { slug: 'mcom', name: 'M.Com.', level: 'Postgraduate', stream: 'Commerce & Management' },
+  { slug: 'bsc', name: 'B.Sc. (Medical & Non-Medical)', level: 'Undergraduate', stream: 'Science & Technology' },
+  { slug: 'bsc-biotech', name: 'B.Sc. (Bio-Technology)', level: 'Undergraduate', stream: 'Science & Technology' },
+  { slug: 'bca', name: 'BCA', level: 'Undergraduate', stream: 'Science & Technology' },
+];
+
+export const noticeCategories = ['Admission', 'Examination', 'Campus', 'Notice'] as const;
