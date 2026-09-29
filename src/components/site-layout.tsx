@@ -19,11 +19,11 @@ export function SiteLayout({ children }: { children: React.ReactNode }) {
   const pathname = useRouterState({ select: (state) => state.location.pathname });
   useEffect(() => { setOpen(false); setDropdown(null); }, [pathname]);
   useEffect(() => {
-    if (!open) return;
-    const close = (event: KeyboardEvent) => { if (event.key === 'Escape') setOpen(false); };
+    if (!open && !dropdown) return;
+    const close = (event: KeyboardEvent) => { if (event.key === 'Escape') { setOpen(false); setDropdown(null); } };
     document.addEventListener('keydown', close);
     return () => document.removeEventListener('keydown', close);
-  }, [open]);
+  }, [open, dropdown]);
   return <>
     <a href="#main" className="skip-link">Skip to content</a>
     <div className="utility-bar"><div className="site-container flex items-center justify-between gap-4">

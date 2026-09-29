@@ -232,3 +232,4 @@
 .page-intro-image { position: relative; overflow: hidden; }
 .page-intro-photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; }
 .page-intro-shade { position: absolute; inset: 0; background: linear-gradient(90deg, oklch(.16 .04 174 / .94), oklch(.16 .04 174 / .72) 52%, oklch(.16 .04 174 / .15)); }
+.campus-guide-link { max-width: 100%; white-space: normal; height: auto; min-height: 40px; text-align: center; padding-block: 10px; }
