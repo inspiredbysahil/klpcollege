@@ -233,3 +233,18 @@
 .page-intro-photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; }
 .page-intro-shade { position: absolute; inset: 0; background: linear-gradient(90deg, oklch(.16 .04 174 / .94), oklch(.16 .04 174 / .72) 52%, oklch(.16 .04 174 / .15)); }
 .campus-guide-link { max-width: 100%; white-space: normal; height: auto; min-height: 40px; text-align: center; padding-block: 10px; }
+
+/* Programme details & notice filters */
+.academic-card li a { color: var(--foreground); display: flex; justify-content: space-between; gap: 10px; align-items: center; }
+.academic-card li a:hover { color: var(--primary); }
+.programme-facts { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 24px; margin: 40px 0; }
+.programme-facts div { border-top: 1px solid var(--border); padding-top: 18px; }
+.programme-facts small { display: block; color: var(--muted-foreground); font-size: 11px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 8px; }
+.programme-facts strong { font-family: var(--font-display); font-size: 18px; }
+.programme-note { border-left: 3px solid var(--primary); background: var(--muted); padding: 20px 24px; font-size: 14px; line-height: 1.8; margin: 16px 0 32px; }
+.programme-list { list-style: disc; padding-left: 20px; color: var(--muted-foreground); line-height: 1.9; font-size: 14px; }
+.notice-filters { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 20px; }
+.notice-search { width: 100%; border: 1px solid var(--border); background: var(--card); padding: 12px 14px; font-size: 15px; margin-bottom: 14px; border-radius: var(--radius); }
+.notice-search:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+.notice-empty { padding: 32px 5px; color: var(--muted-foreground); border-bottom: 1px solid var(--border); font-size: 14px; }
+@media (max-width: 640px) { .programme-facts { grid-template-columns: 1fr; } }
