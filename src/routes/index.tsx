@@ -1,24 +1,26 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from '@tanstack/react-router';
+import { ArrowRight, ArrowUpRight, BookOpen, CalendarDays, GraduationCap, MapPin } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { SectionHeading } from '@/components/site-layout';
+import { college, courseGroups, images, notices, officialLinks } from '@/lib/college';
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
-export const Route = createFileRoute("/")({
-  component: Index,
+export const Route = createFileRoute('/')({
+  head: () => ({ meta: [
+    { title: 'K.L.P. College, Rewari | Kishan Lal Public College' },
+    { name: 'description', content: 'Discover Kishan Lal Public College in Rewari: programmes, admissions, campus life, notices and student services.' },
+    { property: 'og:title', content: 'K.L.P. College, Rewari | Kishan Lal Public College' },
+    { property: 'og:description', content: 'Explore programmes, admissions, campus life and student services at Kishan Lal Public College, Rewari.' },
+    { property: 'og:type', content: 'website' }, { name: 'twitter:card', content: 'summary_large_image' },
+  ] }),
+  component: Home,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
-function Index() {
-  return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
-  );
-}
+function Home() { return <>
+  <section className="home-hero"><img className="hero-image" src={images.building} alt="K.L.P. College campus building in Rewari" fetchPriority="high"/><div className="hero-shade"/><div className="site-container hero-content"><div className="hero-copy"><p className="eyebrow light-eyebrow"><span className="eyebrow-line"/> Welcome to K.L.P. College</p><h1>Kishan Lal<br/>Public College</h1><p className="hero-lead">A place to learn, grow and find your direction. Rooted in Rewari, reaching beyond.</p><div className="hero-buttons"><Button asChild size="lg"><Link to="/academics">Explore programmes <ArrowUpRight size={17}/></Link></Button><Button asChild variant="outline" size="lg" className="hero-outline"><Link to="/about">Discover our story <ArrowRight size={17}/></Link></Button></div></div><div className="hero-side-note"><span>01 / 03</span><span>Learning with purpose<br/>since 1964</span></div></div></section>
+  <div className="quick-strip"><div className="site-container quick-grid"><Link to="/admissions"><GraduationCap size={23}/><span><strong>Admissions</strong><small>Begin your journey</small></span><ArrowUpRight size={18}/></Link><Link to="/academics"><BookOpen size={23}/><span><strong>Programmes</strong><small>Find your path</small></span><ArrowUpRight size={18}/></Link><Link to="/notices"><CalendarDays size={23}/><span><strong>Latest notices</strong><small>Stay up to date</small></span><ArrowUpRight size={18}/></Link><Link to="/contact"><MapPin size={23}/><span><strong>Visit us</strong><small>Rewari, Haryana</small></span><ArrowUpRight size={18}/></Link></div></div>
+  <section className="section section-intro"><div className="site-container intro-grid"><div><SectionHeading eyebrow="A legacy of learning" title="Where tradition meets possibility."/><p className="body-copy">Established in 1964, Kishan Lal Public College is a co-educational institution in Rewari, affiliated with Indira Gandhi University, Meerpur. Across disciplines and experiences, the college creates space for students to discover what comes next.</p><Link className="text-link" to="/about">Get to know K.L.P. <ArrowUpRight size={18}/></Link></div><div className="intro-visual"><img src={images.grounds} alt="Students on the grounds of K.L.P. College" loading="lazy"/><span className="image-caption">A community built around learning.</span></div></div></section>
+  <section className="section section-programmes"><div className="site-container"><div className="section-top"><SectionHeading eyebrow="Academics" title="Find your field of study." description="Explore undergraduate and postgraduate pathways across the arts, commerce and sciences."/><Link className="text-link" to="/academics">View all programmes <ArrowUpRight size={18}/></Link></div><div className="programme-grid">{courseGroups.map(group => <Link to="/academics" className="programme-card" key={group.title}><span className="programme-number">{group.icon} / FIELD OF STUDY</span><div><h3>{group.title}</h3><p>{group.label}</p></div><ArrowUpRight className="programme-arrow" size={23}/></Link>)}</div></div></section>
+  <section className="section section-notices"><div className="site-container notices-grid"><div><SectionHeading eyebrow="The latest" title="Stay in the know." description="Important announcements and updates from the college."/><Button asChild variant="outline" size="lg"><Link to="/notices">All notices <ArrowUpRight size={17}/></Link></Button></div><div className="notice-list">{notices.map((notice, index) => <a key={notice.title} href={notice.href} target="_blank" rel="noopener noreferrer" className="notice-row"><span className="notice-index">0{index + 1}</span><span className="notice-main"><small>{notice.category} · {notice.date}</small><strong>{notice.title}</strong></span><ArrowUpRight size={19}/></a>)}</div></div></section>
+  <section className="campus-feature"><img src={images.hall} alt="K.L.P. College campus facilities" loading="lazy"/><div className="campus-feature-shade"/><div className="site-container campus-feature-content"><p className="eyebrow light-eyebrow">Beyond the classroom</p><h2>More to college<br/>than coursework.</h2><p>Explore the spaces, activities and communities that make K.L.P. College your own.</p><Button asChild size="lg"><Link to="/campus">Explore campus life <ArrowUpRight size={17}/></Link></Button></div></section>
+  <section className="section final-cta"><div className="site-container final-cta-inner"><div><p className="eyebrow">Your next step</p><h2>Ready to begin?</h2><p>Find the information you need to start your journey at K.L.P. College.</p></div><Button asChild size="lg"><Link to="/admissions">Admissions information <ArrowUpRight size={17}/></Link></Button></div></section>
+</>; }
