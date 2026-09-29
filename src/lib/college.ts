@@ -11,7 +11,7 @@ export const college = {
 };
 
 export const images = {
-  crest: '/__l5e/assets-v1/a59e715e-594a-45e1-ad6a-925e1147ff7c/klp-crest.png',
+  crest: '/__l5e/assets-v1/a9aea1fc-71d6-4729-970d-aeb159ecd0a1/klp-crest-full.png',
   building: '/__l5e/assets-v1/88483778-8449-4fb0-b665-02b9f8c2b79c/klp-campus-building.jpg',
   hall: '/__l5e/assets-v1/aea4b06d-7771-4cb8-ae04-c592f4278c58/klp-photo3.jpg',
   grounds: '/__l5e/assets-v1/1ecb3f27-d72e-4f50-a5e1-5c75e29c3079/klp-photo6.jpg',
