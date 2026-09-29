@@ -11,3 +11,4 @@
 
 - Keep public college facts and outbound official links in `src/lib/college.ts`; this prevents conflicting or invented institutional information across pages.
 - Use the shared `SiteLayout` and page-intro components for public routes; this keeps navigation and presentation consistent.
+- Build route head() metadata with `seo()` from `src/lib/seo.ts`; keeps canonical, Open Graph and Twitter previews consistent.
