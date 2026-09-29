@@ -1,0 +1,3 @@
+- [ ] Build verified college pages and consistent navigation
+- [ ] Complete accessibility, metadata, and responsive checks
+- [ ] Verify every route on desktop and mobile
