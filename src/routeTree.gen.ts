@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
+import { Route as AboutDirectoryRouteImport } from './routes/about-directory'
 import { Route as AcademicResourcesRouteImport } from './routes/academic-resources'
 import { Route as AcademicsRouteImport } from './routes/academics'
 import { Route as ActivitiesRouteImport } from './routes/activities'
@@ -34,6 +35,11 @@ const IndexRoute = IndexRouteImport.update({
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutDirectoryRoute = AboutDirectoryRouteImport.update({
+  id: '/about-directory',
+  path: '/about-directory',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AcademicResourcesRoute = AcademicResourcesRouteImport.update({
@@ -110,6 +116,7 @@ const ProgrammesSlugRoute = ProgrammesSlugRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/about-directory': typeof AboutDirectoryRoute
   '/academic-resources': typeof AcademicResourcesRoute
   '/academics': typeof AcademicsRoute
   '/activities': typeof ActivitiesRoute
@@ -128,6 +135,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/about-directory': typeof AboutDirectoryRoute
   '/academic-resources': typeof AcademicResourcesRoute
   '/academics': typeof AcademicsRoute
   '/activities': typeof ActivitiesRoute
@@ -147,6 +155,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/about-directory': typeof AboutDirectoryRoute
   '/academic-resources': typeof AcademicResourcesRoute
   '/academics': typeof AcademicsRoute
   '/activities': typeof ActivitiesRoute
@@ -167,6 +176,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/about'
+    | '/about-directory'
     | '/academic-resources'
     | '/academics'
     | '/activities'
@@ -185,6 +195,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/about'
+    | '/about-directory'
     | '/academic-resources'
     | '/academics'
     | '/activities'
@@ -203,6 +214,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/about'
+    | '/about-directory'
     | '/academic-resources'
     | '/academics'
     | '/activities'
@@ -222,6 +234,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  AboutDirectoryRoute: typeof AboutDirectoryRoute
   AcademicResourcesRoute: typeof AcademicResourcesRoute
   AcademicsRoute: typeof AcademicsRoute
   ActivitiesRoute: typeof ActivitiesRoute
@@ -252,6 +265,13 @@ declare module '@tanstack/react-router' {
       path: '/about'
       fullPath: '/about'
       preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about-directory': {
+      id: '/about-directory'
+      path: '/about-directory'
+      fullPath: '/about-directory'
+      preLoaderRoute: typeof AboutDirectoryRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/academic-resources': {
@@ -358,6 +378,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  AboutDirectoryRoute: AboutDirectoryRoute,
   AcademicResourcesRoute: AcademicResourcesRoute,
   AcademicsRoute: AcademicsRoute,
   ActivitiesRoute: ActivitiesRoute,

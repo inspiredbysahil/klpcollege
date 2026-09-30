@@ -40,11 +40,13 @@ function ProgrammePage() {
         <div><small>Affiliation</small><strong>IGU, Meerpur</strong></div>
       </div>
       <SectionHeading eyebrow="Eligibility & duration" title="Confirm the current requirements."/>
-      <p className="programme-note">Eligibility criteria, duration, seats and fees for {p.name} are set each session according to university norms. Please check the latest official admission notice or contact the college before applying.</p>
+      <div className="programme-facts"><div><small>Eligibility</small><strong>{p.eligibility || 'Confirm with admissions'}</strong></div><div><small>Duration</small><strong>{p.duration || 'Confirm with admissions'}</strong></div></div>
+      <p className="programme-note">{p.historical ? 'The information above is from a historical course page and may have changed.' : 'The official course listing does not confirm current eligibility or duration for this programme.'} Check the latest official admission notice or contact the college before applying. {p.source && <a href={p.source} target="_blank" rel="noopener noreferrer">View course source <ArrowUpRight size={14}/></a>}</p>
       <SectionHeading eyebrow="Academic rules" title="What every student should know."/>
       <ul className="programme-list">{programmeRules.items.map((r) => <li key={r}>{r}</li>)}</ul>
       <div className="academic-actions">
         <Button asChild size="lg"><a href={officialLinks.admission} target="_blank" rel="noopener noreferrer">Official admission information <ArrowUpRight size={17}/></a></Button>
+        <Button asChild variant="outline" size="lg"><Link to="/compare" search={{ programmes: p.slug }}>Compare programmes <ArrowUpRight size={17}/></Link></Button>
         <Button asChild variant="outline" size="lg"><a href={officialLinks.fees} target="_blank" rel="noopener noreferrer">Fee structure <ArrowUpRight size={17}/></a></Button>
         <Button asChild variant="outline" size="lg"><a href={`tel:${college.phone.replaceAll('-', '')}`}>Call {college.phone}</a></Button>
       </div>
