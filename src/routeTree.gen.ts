@@ -11,11 +11,20 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
+import { Route as AboutDirectoryRouteImport } from './routes/about-directory'
+import { Route as AcademicResourcesRouteImport } from './routes/academic-resources'
 import { Route as AcademicsRouteImport } from './routes/academics'
+import { Route as ActivitiesRouteImport } from './routes/activities'
 import { Route as AdmissionsRouteImport } from './routes/admissions'
+import { Route as AlumniRouteImport } from './routes/alumni'
 import { Route as CampusRouteImport } from './routes/campus'
+import { Route as CompareRouteImport } from './routes/compare'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as FacultyRouteImport } from './routes/faculty'
+import { Route as GalleryRouteImport } from './routes/gallery'
+import { Route as IqacRouteImport } from './routes/iqac'
 import { Route as NoticesRouteImport } from './routes/notices'
+import { Route as StudentsRouteImport } from './routes/students'
 import { Route as ProgrammesSlugRouteImport } from './routes/programmes.$slug'
 
 const IndexRoute = IndexRouteImport.update({
@@ -28,9 +37,24 @@ const AboutRoute = AboutRouteImport.update({
   path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AboutDirectoryRoute = AboutDirectoryRouteImport.update({
+  id: '/about-directory',
+  path: '/about-directory',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AcademicResourcesRoute = AcademicResourcesRouteImport.update({
+  id: '/academic-resources',
+  path: '/academic-resources',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AcademicsRoute = AcademicsRouteImport.update({
   id: '/academics',
   path: '/academics',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ActivitiesRoute = ActivitiesRouteImport.update({
+  id: '/activities',
+  path: '/activities',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AdmissionsRoute = AdmissionsRouteImport.update({
@@ -38,9 +62,19 @@ const AdmissionsRoute = AdmissionsRouteImport.update({
   path: '/admissions',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AlumniRoute = AlumniRouteImport.update({
+  id: '/alumni',
+  path: '/alumni',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CampusRoute = CampusRouteImport.update({
   id: '/campus',
   path: '/campus',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CompareRoute = CompareRouteImport.update({
+  id: '/compare',
+  path: '/compare',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContactRoute = ContactRouteImport.update({
@@ -48,9 +82,29 @@ const ContactRoute = ContactRouteImport.update({
   path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
+const FacultyRoute = FacultyRouteImport.update({
+  id: '/faculty',
+  path: '/faculty',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GalleryRoute = GalleryRouteImport.update({
+  id: '/gallery',
+  path: '/gallery',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const IqacRoute = IqacRouteImport.update({
+  id: '/iqac',
+  path: '/iqac',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const NoticesRoute = NoticesRouteImport.update({
   id: '/notices',
   path: '/notices',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StudentsRoute = StudentsRouteImport.update({
+  id: '/students',
+  path: '/students',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ProgrammesSlugRoute = ProgrammesSlugRouteImport.update({
@@ -62,32 +116,59 @@ const ProgrammesSlugRoute = ProgrammesSlugRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/about-directory': typeof AboutDirectoryRoute
+  '/academic-resources': typeof AcademicResourcesRoute
   '/academics': typeof AcademicsRoute
+  '/activities': typeof ActivitiesRoute
   '/admissions': typeof AdmissionsRoute
+  '/alumni': typeof AlumniRoute
   '/campus': typeof CampusRoute
+  '/compare': typeof CompareRoute
   '/contact': typeof ContactRoute
+  '/faculty': typeof FacultyRoute
+  '/gallery': typeof GalleryRoute
+  '/iqac': typeof IqacRoute
   '/notices': typeof NoticesRoute
+  '/students': typeof StudentsRoute
   '/programmes/$slug': typeof ProgrammesSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/about-directory': typeof AboutDirectoryRoute
+  '/academic-resources': typeof AcademicResourcesRoute
   '/academics': typeof AcademicsRoute
+  '/activities': typeof ActivitiesRoute
   '/admissions': typeof AdmissionsRoute
+  '/alumni': typeof AlumniRoute
   '/campus': typeof CampusRoute
+  '/compare': typeof CompareRoute
   '/contact': typeof ContactRoute
+  '/faculty': typeof FacultyRoute
+  '/gallery': typeof GalleryRoute
+  '/iqac': typeof IqacRoute
   '/notices': typeof NoticesRoute
+  '/students': typeof StudentsRoute
   '/programmes/$slug': typeof ProgrammesSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/about-directory': typeof AboutDirectoryRoute
+  '/academic-resources': typeof AcademicResourcesRoute
   '/academics': typeof AcademicsRoute
+  '/activities': typeof ActivitiesRoute
   '/admissions': typeof AdmissionsRoute
+  '/alumni': typeof AlumniRoute
   '/campus': typeof CampusRoute
+  '/compare': typeof CompareRoute
   '/contact': typeof ContactRoute
+  '/faculty': typeof FacultyRoute
+  '/gallery': typeof GalleryRoute
+  '/iqac': typeof IqacRoute
   '/notices': typeof NoticesRoute
+  '/students': typeof StudentsRoute
   '/programmes/$slug': typeof ProgrammesSlugRoute
 }
 export interface FileRouteTypes {
@@ -95,42 +176,78 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/about'
+    | '/about-directory'
+    | '/academic-resources'
     | '/academics'
+    | '/activities'
     | '/admissions'
+    | '/alumni'
     | '/campus'
+    | '/compare'
     | '/contact'
+    | '/faculty'
+    | '/gallery'
+    | '/iqac'
     | '/notices'
+    | '/students'
     | '/programmes/$slug'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/about'
+    | '/about-directory'
+    | '/academic-resources'
     | '/academics'
+    | '/activities'
     | '/admissions'
+    | '/alumni'
     | '/campus'
+    | '/compare'
     | '/contact'
+    | '/faculty'
+    | '/gallery'
+    | '/iqac'
     | '/notices'
+    | '/students'
     | '/programmes/$slug'
   id:
     | '__root__'
     | '/'
     | '/about'
+    | '/about-directory'
+    | '/academic-resources'
     | '/academics'
+    | '/activities'
     | '/admissions'
+    | '/alumni'
     | '/campus'
+    | '/compare'
     | '/contact'
+    | '/faculty'
+    | '/gallery'
+    | '/iqac'
     | '/notices'
+    | '/students'
     | '/programmes/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  AboutDirectoryRoute: typeof AboutDirectoryRoute
+  AcademicResourcesRoute: typeof AcademicResourcesRoute
   AcademicsRoute: typeof AcademicsRoute
+  ActivitiesRoute: typeof ActivitiesRoute
   AdmissionsRoute: typeof AdmissionsRoute
+  AlumniRoute: typeof AlumniRoute
   CampusRoute: typeof CampusRoute
+  CompareRoute: typeof CompareRoute
   ContactRoute: typeof ContactRoute
+  FacultyRoute: typeof FacultyRoute
+  GalleryRoute: typeof GalleryRoute
+  IqacRoute: typeof IqacRoute
   NoticesRoute: typeof NoticesRoute
+  StudentsRoute: typeof StudentsRoute
   ProgrammesSlugRoute: typeof ProgrammesSlugRoute
 }
 
@@ -150,11 +267,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/about-directory': {
+      id: '/about-directory'
+      path: '/about-directory'
+      fullPath: '/about-directory'
+      preLoaderRoute: typeof AboutDirectoryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/academic-resources': {
+      id: '/academic-resources'
+      path: '/academic-resources'
+      fullPath: '/academic-resources'
+      preLoaderRoute: typeof AcademicResourcesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/academics': {
       id: '/academics'
       path: '/academics'
       fullPath: '/academics'
       preLoaderRoute: typeof AcademicsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/activities': {
+      id: '/activities'
+      path: '/activities'
+      fullPath: '/activities'
+      preLoaderRoute: typeof ActivitiesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/admissions': {
@@ -164,11 +302,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdmissionsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/alumni': {
+      id: '/alumni'
+      path: '/alumni'
+      fullPath: '/alumni'
+      preLoaderRoute: typeof AlumniRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/campus': {
       id: '/campus'
       path: '/campus'
       fullPath: '/campus'
       preLoaderRoute: typeof CampusRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/compare': {
+      id: '/compare'
+      path: '/compare'
+      fullPath: '/compare'
+      preLoaderRoute: typeof CompareRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contact': {
@@ -178,11 +330,39 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/faculty': {
+      id: '/faculty'
+      path: '/faculty'
+      fullPath: '/faculty'
+      preLoaderRoute: typeof FacultyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/gallery': {
+      id: '/gallery'
+      path: '/gallery'
+      fullPath: '/gallery'
+      preLoaderRoute: typeof GalleryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/iqac': {
+      id: '/iqac'
+      path: '/iqac'
+      fullPath: '/iqac'
+      preLoaderRoute: typeof IqacRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/notices': {
       id: '/notices'
       path: '/notices'
       fullPath: '/notices'
       preLoaderRoute: typeof NoticesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/students': {
+      id: '/students'
+      path: '/students'
+      fullPath: '/students'
+      preLoaderRoute: typeof StudentsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/programmes/$slug': {
@@ -198,11 +378,20 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  AboutDirectoryRoute: AboutDirectoryRoute,
+  AcademicResourcesRoute: AcademicResourcesRoute,
   AcademicsRoute: AcademicsRoute,
+  ActivitiesRoute: ActivitiesRoute,
   AdmissionsRoute: AdmissionsRoute,
+  AlumniRoute: AlumniRoute,
   CampusRoute: CampusRoute,
+  CompareRoute: CompareRoute,
   ContactRoute: ContactRoute,
+  FacultyRoute: FacultyRoute,
+  GalleryRoute: GalleryRoute,
+  IqacRoute: IqacRoute,
   NoticesRoute: NoticesRoute,
+  StudentsRoute: StudentsRoute,
   ProgrammesSlugRoute: ProgrammesSlugRoute,
 }
 export const routeTree = rootRouteImport
