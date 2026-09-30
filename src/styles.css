@@ -273,5 +273,6 @@
 .compare-cell a { color: var(--primary); display: inline-flex; align-items: center; gap: 5px; }
 .compare-cell .compare-source { display: flex; width: fit-content; font-size: 12px; margin-top: 10px; }
 .programme-note a { color: var(--primary); display: inline-flex; align-items: center; gap: 4px; }
+@media (max-width: 370px) { .page-intro h1 { overflow-wrap: anywhere; } .academic-actions > a { max-width: 100%; white-space: normal; text-align: center; } }
 @media (max-width: 850px) { .directory-grid, .compare-picker { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 640px) { .directory-heading { display: block; } .directory-heading .text-link { display: inline-flex; margin-top: 20px; } .directory-grid, .compare-picker { grid-template-columns: 1fr; } .directory-grid { margin-top: 30px; } .compare-table { grid-template-columns: minmax(105px, .7fr) repeat(var(--compare-columns), minmax(180px, 1fr)); } .compare-label, .compare-cell { padding: 16px 12px; } .compare-cell { width: 190px; } }
