@@ -56,7 +56,7 @@ export const sectionLinks = {
     { label: 'Annual report', href: 'https://www.klpcollege.ac.in/page/annual-report' },
   ],
   students: [
-    { label: 'Programmes at a glance', href: programmeRules.source },
+    { label: 'Programmes at a glance', href: 'https://www.klpcollege.ac.in/page/programmes-at-a-glance' },
     { label: 'Examinations', href: 'https://www.klpcollege.ac.in/page/exams' },
     { label: 'Scholarships & awards', href: 'https://www.klpcollege.ac.in/page/awards-and-scholorship' },
     { label: 'Student helpline', href: 'https://www.klpcollege.ac.in/page/student-helpline' },
