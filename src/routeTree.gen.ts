@@ -14,6 +14,7 @@ import { Route as AboutRouteImport } from './routes/about'
 import { Route as AcademicsRouteImport } from './routes/academics'
 import { Route as AdmissionsRouteImport } from './routes/admissions'
 import { Route as CampusRouteImport } from './routes/campus'
+import { Route as CompareRouteImport } from './routes/compare'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as NoticesRouteImport } from './routes/notices'
 import { Route as ProgrammesSlugRouteImport } from './routes/programmes.$slug'
@@ -43,6 +44,11 @@ const CampusRoute = CampusRouteImport.update({
   path: '/campus',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CompareRoute = CompareRouteImport.update({
+  id: '/compare',
+  path: '/compare',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
@@ -65,6 +71,7 @@ export interface FileRoutesByFullPath {
   '/academics': typeof AcademicsRoute
   '/admissions': typeof AdmissionsRoute
   '/campus': typeof CampusRoute
+  '/compare': typeof CompareRoute
   '/contact': typeof ContactRoute
   '/notices': typeof NoticesRoute
   '/programmes/$slug': typeof ProgrammesSlugRoute
@@ -75,6 +82,7 @@ export interface FileRoutesByTo {
   '/academics': typeof AcademicsRoute
   '/admissions': typeof AdmissionsRoute
   '/campus': typeof CampusRoute
+  '/compare': typeof CompareRoute
   '/contact': typeof ContactRoute
   '/notices': typeof NoticesRoute
   '/programmes/$slug': typeof ProgrammesSlugRoute
@@ -86,6 +94,7 @@ export interface FileRoutesById {
   '/academics': typeof AcademicsRoute
   '/admissions': typeof AdmissionsRoute
   '/campus': typeof CampusRoute
+  '/compare': typeof CompareRoute
   '/contact': typeof ContactRoute
   '/notices': typeof NoticesRoute
   '/programmes/$slug': typeof ProgrammesSlugRoute
@@ -98,6 +107,7 @@ export interface FileRouteTypes {
     | '/academics'
     | '/admissions'
     | '/campus'
+    | '/compare'
     | '/contact'
     | '/notices'
     | '/programmes/$slug'
@@ -108,6 +118,7 @@ export interface FileRouteTypes {
     | '/academics'
     | '/admissions'
     | '/campus'
+    | '/compare'
     | '/contact'
     | '/notices'
     | '/programmes/$slug'
@@ -118,6 +129,7 @@ export interface FileRouteTypes {
     | '/academics'
     | '/admissions'
     | '/campus'
+    | '/compare'
     | '/contact'
     | '/notices'
     | '/programmes/$slug'
@@ -129,6 +141,7 @@ export interface RootRouteChildren {
   AcademicsRoute: typeof AcademicsRoute
   AdmissionsRoute: typeof AdmissionsRoute
   CampusRoute: typeof CampusRoute
+  CompareRoute: typeof CompareRoute
   ContactRoute: typeof ContactRoute
   NoticesRoute: typeof NoticesRoute
   ProgrammesSlugRoute: typeof ProgrammesSlugRoute
@@ -171,6 +184,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CampusRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/compare': {
+      id: '/compare'
+      path: '/compare'
+      fullPath: '/compare'
+      preLoaderRoute: typeof CompareRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/contact': {
       id: '/contact'
       path: '/contact'
@@ -201,6 +221,7 @@ const rootRouteChildren: RootRouteChildren = {
   AcademicsRoute: AcademicsRoute,
   AdmissionsRoute: AdmissionsRoute,
   CampusRoute: CampusRoute,
+  CompareRoute: CompareRoute,
   ContactRoute: ContactRoute,
   NoticesRoute: NoticesRoute,
   ProgrammesSlugRoute: ProgrammesSlugRoute,
