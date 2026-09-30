@@ -1,3 +1,6 @@
 - [x] Build verified college pages and consistent navigation
 - [x] Complete accessibility, metadata, and responsive checks
 - [x] Verify every route on desktop and mobile
+- [x] Add shareable programme comparison with verified or clearly marked historical criteria
+- [x] Expand major-section navigation and official resource directories
+- [x] Check all content pages and programme routes at desktop and mobile widths
