@@ -8,6 +8,7 @@ export const college = {
   portal: 'https://college.klpcollege.ac.in/site/userlogin',
   staffPortal: 'https://college.klpcollege.ac.in/site/login',
   feePayment: 'https://www.klpcollege.ac.in/read/ugpgi-year',
+  apply: 'https://admissions.highereduhry.ac.in/',
 };
 
 export const images = {
@@ -37,7 +38,72 @@ export const officialLinks = {
   campus: 'https://www.klpcollege.ac.in/page/campus-at-glance',
   notices: 'https://www.klpcollege.ac.in/page/noticesannouncements',
   fees: 'https://www.klpcollege.ac.in/page/fee-structure-for-the-session-2025-26',
+  students: 'https://www.klpcollege.ac.in/page/students',
+  faculty: 'https://www.klpcollege.ac.in/page/faculty',
+  gallery: 'https://www.klpcollege.ac.in/page/mediagallery',
+  activities: 'https://www.klpcollege.ac.in/page/eventsactivities',
+  iqac: 'https://www.klpcollege.ac.in/page/iqac',
+  alumni: 'https://www.klpcollege.ac.in/page/alumni',
 };
+
+export const sectionLinks = {
+  about: [
+    { label: 'Introduction', href: officialLinks.about },
+    { label: 'History', href: 'https://www.klpcollege.ac.in/page/history' },
+    { label: 'Principal’s desk', href: 'https://www.klpcollege.ac.in/page/principals-desk' },
+    { label: 'Facilities', href: 'https://www.klpcollege.ac.in/page/facilities' },
+    { label: 'Governing body', href: 'https://www.klpcollege.ac.in/page/governing-body' },
+    { label: 'Annual report', href: 'https://www.klpcollege.ac.in/page/annual-report' },
+  ],
+  students: [
+    { label: 'Programmes at a glance', href: programmeRules.source },
+    { label: 'Examinations', href: 'https://www.klpcollege.ac.in/page/exams' },
+    { label: 'Scholarships & awards', href: 'https://www.klpcollege.ac.in/page/awards-and-scholorship' },
+    { label: 'Student helpline', href: 'https://www.klpcollege.ac.in/page/student-helpline' },
+    { label: 'Grievance redressal', href: 'https://www.klpcollege.ac.in/page/grievance-redressal' },
+    { label: 'E-resources', href: 'https://www.klpcollege.ac.in/page/e-resources-for-students' },
+    { label: 'NCC & NSS', href: 'https://www.klpcollege.ac.in/page/ncc-and-nss' },
+  ],
+  academics: [
+    { label: 'Courses offered', href: officialLinks.courses },
+    { label: 'Fee structure (2025–26)', href: officialLinks.fees },
+    { label: 'Syllabus', href: 'https://www.klpcollege.ac.in/page/syllabus' },
+    { label: 'Academic calendar', href: 'https://www.klpcollege.ac.in/page/academic-calendar-1' },
+    { label: 'Time table', href: 'https://www.klpcollege.ac.in/page/time-table' },
+    { label: 'Results', href: 'https://www.klpcollege.ac.in/page/exam-result' },
+  ],
+  faculty: [
+    { label: 'Departments', href: 'https://www.klpcollege.ac.in/page/departments' },
+    { label: 'Teaching staff', href: 'https://www.klpcollege.ac.in/page/list-of-teaching-staff' },
+    { label: 'Non-teaching staff', href: 'https://www.klpcollege.ac.in/page/list-of-non-teaching-staff' },
+    { label: 'Committees & cells', href: 'https://www.klpcollege.ac.in/page/committees-and-cells' },
+    { label: 'Professional ethics', href: 'https://www.klpcollege.ac.in/page/code-of-professional-ethics' },
+  ],
+  gallery: [
+    { label: 'Photos', href: 'https://www.klpcollege.ac.in/page/photos' },
+    { label: 'Videos', href: 'https://www.klpcollege.ac.in/page/videos' },
+    { label: 'Social media', href: 'https://www.klpcollege.ac.in/page/social-media' },
+  ],
+  activities: [
+    { label: 'NCC', href: 'https://www.klpcollege.ac.in/page/ncc' },
+    { label: 'NSS', href: 'https://www.klpcollege.ac.in/page/nss' },
+    { label: 'Women cell', href: 'https://www.klpcollege.ac.in/page/women-cell' },
+    { label: 'Sports club', href: 'https://www.klpcollege.ac.in/page/sports-club' },
+    { label: 'Cultural club', href: 'https://www.klpcollege.ac.in/page/cultural-club' },
+    { label: 'Internal complaints committee', href: 'https://www.klpcollege.ac.in/page/internal-complaints-committee-1' },
+  ],
+  iqac: [
+    { label: 'IQAC introduction', href: 'https://www.klpcollege.ac.in/page/introduction-1' },
+    { label: 'Composition', href: 'https://www.klpcollege.ac.in/page/composition' },
+    { label: 'AQARs', href: 'https://www.klpcollege.ac.in/page/aqars' },
+    { label: 'Meeting minutes', href: 'https://www.klpcollege.ac.in/page/minutes-of-the-meeting' },
+    { label: 'Student satisfaction survey', href: 'https://www.klpcollege.ac.in/page/student-satisfaction-survey' },
+  ],
+  alumni: [
+    { label: 'Alumni introduction', href: 'https://www.klpcollege.ac.in/page/introduction-2' },
+    { label: 'Notable alumni', href: 'https://www.klpcollege.ac.in/page/notable-alumni' },
+  ],
+} as const;
 
 export const siteUrl = 'https://klpcollege.lovable.app';
 
@@ -49,19 +115,19 @@ export const programmeRules = {
   ],
 };
 
-export type Programme = { slug: string; name: string; level: 'Undergraduate' | 'Postgraduate'; stream: string };
+export type Programme = { slug: string; name: string; level: 'Undergraduate' | 'Postgraduate'; stream: string; eligibility?: string; duration?: string; source?: string; historical?: boolean };
 
 export const programmes: Programme[] = [
   { slug: 'ba', name: 'B.A. (Bachelor of Arts)', level: 'Undergraduate', stream: 'Arts & Humanities' },
   { slug: 'ba-jmc', name: 'B.A. (Journalism & Mass Communication)', level: 'Undergraduate', stream: 'Arts & Humanities' },
   { slug: 'ma-geography', name: 'M.A. (Geography)', level: 'Postgraduate', stream: 'Arts & Humanities' },
   { slug: 'bcom', name: 'B.Com.', level: 'Undergraduate', stream: 'Commerce & Management' },
-  { slug: 'bcom-hons', name: 'B.Com. (Hons)', level: 'Undergraduate', stream: 'Commerce & Management' },
+  { slug: 'bcom-hons', name: 'B.Com. (Hons)', level: 'Undergraduate', stream: 'Commerce & Management', eligibility: '10+2 with 45% aggregate (historical course criteria)', duration: '3 years (historical course structure)', source: 'https://www.klpcollege.ac.in/course/3', historical: true },
   { slug: 'bba', name: 'BBA', level: 'Undergraduate', stream: 'Commerce & Management' },
-  { slug: 'mcom', name: 'M.Com.', level: 'Postgraduate', stream: 'Commerce & Management' },
+  { slug: 'mcom', name: 'M.Com.', level: 'Postgraduate', stream: 'Commerce & Management', eligibility: 'B.Com. / BBA / B.A. with specified commerce-related subjects and 45% aggregate (historical course criteria)', source: 'https://www.klpcollege.ac.in/course/8', historical: true },
   { slug: 'bsc', name: 'B.Sc. (Medical & Non-Medical)', level: 'Undergraduate', stream: 'Science & Technology' },
   { slug: 'bsc-biotech', name: 'B.Sc. (Bio-Technology)', level: 'Undergraduate', stream: 'Science & Technology' },
-  { slug: 'bca', name: 'BCA', level: 'Undergraduate', stream: 'Science & Technology' },
+  { slug: 'bca', name: 'BCA', level: 'Undergraduate', stream: 'Science & Technology', eligibility: '10+2 with 45% aggregate or eligible three-year polytechnic diploma (historical course criteria)', duration: '3 years (historical course structure)', source: 'https://www.klpcollege.ac.in/course/4', historical: true },
 ];
 
 export const noticeCategories = ['Admission', 'Examination', 'Campus', 'Notice'] as const;
