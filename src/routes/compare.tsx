@@ -1,5 +1,4 @@
-import { createFileRoute, Link } from '@tanstack/react-router';
-import { useState } from 'react';
+import { createFileRoute, Link, useNavigate } from '@tanstack/react-router';
 import { ArrowUpRight, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { PageIntro, SectionHeading } from '@/components/site-layout';
@@ -19,12 +18,12 @@ export const Route = createFileRoute('/compare')({
 
 function Compare() {
   const { programmes: query } = Route.useSearch();
-  const [selected, setSelected] = useState<string[]>(() => initial({ programmes: query }));
+  const navigate = useNavigate();
+  const selected = initial({ programmes: query });
   const chosen = selected.flatMap(slug => { const p = programmes.find(item => item.slug === slug); return p ? [p] : []; });
   const toggle = (slug: string) => {
     const next = selected.includes(slug) ? selected.filter(value => value !== slug) : selected.length < MAX ? [...selected, slug] : selected;
-    setSelected(next);
-    window.history.replaceState(window.history.state, '', `${window.location.pathname}${next.length ? `?programmes=${encodeURIComponent(next.join(','))}` : ''}`);
+    void navigate({ to: '/compare', search: { programmes: next.join(',') }, replace: true });
   };
   return <>
     <PageIntro eyebrow="Academics / Compare" title="Compare programmes" description="Set degree options side by side before exploring the current admission requirements." />
@@ -36,7 +35,7 @@ function Compare() {
       <p className="compare-count" role="status">{selected.length} of {MAX} selected{selected.length >= MAX ? ' · Remove one to choose another.' : ''}</p>
     </div></section>
     <section className="section section-muted"><div className="site-container">
-      <div className="section-top"><SectionHeading eyebrow="Side by side" title="Your comparison" />{selected.length > 0 && <Button variant="ghost" onClick={() => { setSelected([]); window.history.replaceState(window.history.state, '', window.location.pathname); }}>Clear selection <X size={15}/></Button>}</div>
+      <div className="section-top"><SectionHeading eyebrow="Side by side" title="Your comparison" />{selected.length > 0 && <Button variant="ghost" onClick={() => { void navigate({ to: '/compare', search: { programmes: '' }, replace: true }); }}>Clear selection <X size={15}/></Button>}</div>
       {chosen.length === 0 ? <p className="programme-note">Select a programme above to start comparing eligibility, duration and admission options.</p> : <>
         <div className="compare-scroll" tabIndex={0} aria-label="Programme comparison; scroll horizontally on smaller screens"><div className="compare-table" style={{ '--compare-columns': chosen.length } as React.CSSProperties}>
           <div className="compare-label compare-heading">Programme</div>{chosen.map(p => <div className="compare-cell compare-heading" key={p.slug}><Link to="/programmes/$slug" params={{ slug: p.slug }}>{p.name} <ArrowUpRight size={15}/></Link><Button variant="ghost" size="icon" aria-label={`Remove ${p.name}`} onClick={() => toggle(p.slug)}><X size={15}/></Button></div>)}
