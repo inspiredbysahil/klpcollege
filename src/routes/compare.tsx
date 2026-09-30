@@ -11,7 +11,7 @@ const initial = (search: Record<string, unknown>) => typeof search['programmes']
   : [];
 
 export const Route = createFileRoute('/compare')({
-  validateSearch: (search: Record<string, unknown>) => ({ programmes: typeof search['programmes'] === 'string' ? search['programmes'] : '' }),
+  validateSearch: (search: Record<string, unknown>): { programmes?: string } => typeof search['programmes'] === 'string' ? { programmes: search['programmes'] } : {},
   head: () => seo({ title: 'Compare Programmes | K.L.P. College, Rewari', description: 'Compare K.L.P. College programmes by study level, eligibility, duration and official admission links. Check current requirements before applying.', path: '/compare' }),
   component: Compare,
 });
