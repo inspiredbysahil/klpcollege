@@ -26,6 +26,7 @@ import { Route as FacultyRouteImport } from './routes/faculty'
 import { Route as GalleryRouteImport } from './routes/gallery'
 import { Route as IqacRouteImport } from './routes/iqac'
 import { Route as NoticesRouteImport } from './routes/notices'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as StudentsRouteImport } from './routes/students'
 import { Route as SectionPageRouteImport } from './routes/$section.$page'
 import { Route as ApiAskRouteImport } from './routes/api/ask'
@@ -117,6 +118,11 @@ const NoticesRoute = NoticesRouteImport.update({
   path: '/notices',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const StudentsRoute = StudentsRouteImport.update({
   id: '/students',
   path: '/students',
@@ -161,6 +167,7 @@ export interface FileRoutesByFullPath {
   '/gallery': typeof GalleryRoute
   '/iqac': typeof IqacRoute
   '/notices': typeof NoticesRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/students': typeof StudentsRoute
   '/$section/$page': typeof SectionPageRoute
   '/api/ask': typeof ApiAskRoute
@@ -185,6 +192,7 @@ export interface FileRoutesByTo {
   '/gallery': typeof GalleryRoute
   '/iqac': typeof IqacRoute
   '/notices': typeof NoticesRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/students': typeof StudentsRoute
   '/$section/$page': typeof SectionPageRoute
   '/api/ask': typeof ApiAskRoute
@@ -210,6 +218,7 @@ export interface FileRoutesById {
   '/gallery': typeof GalleryRoute
   '/iqac': typeof IqacRoute
   '/notices': typeof NoticesRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/students': typeof StudentsRoute
   '/$section/$page': typeof SectionPageRoute
   '/api/ask': typeof ApiAskRoute
@@ -236,6 +245,7 @@ export interface FileRouteTypes {
     | '/gallery'
     | '/iqac'
     | '/notices'
+    | '/sitemap.xml'
     | '/students'
     | '/$section/$page'
     | '/api/ask'
@@ -260,6 +270,7 @@ export interface FileRouteTypes {
     | '/gallery'
     | '/iqac'
     | '/notices'
+    | '/sitemap.xml'
     | '/students'
     | '/$section/$page'
     | '/api/ask'
@@ -284,6 +295,7 @@ export interface FileRouteTypes {
     | '/gallery'
     | '/iqac'
     | '/notices'
+    | '/sitemap.xml'
     | '/students'
     | '/$section/$page'
     | '/api/ask'
@@ -309,6 +321,7 @@ export interface RootRouteChildren {
   GalleryRoute: typeof GalleryRoute
   IqacRoute: typeof IqacRoute
   NoticesRoute: typeof NoticesRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   StudentsRoute: typeof StudentsRoute
   SectionPageRoute: typeof SectionPageRoute
   ApiAskRoute: typeof ApiAskRoute
@@ -437,6 +450,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof NoticesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/students': {
       id: '/students'
       path: '/students'
@@ -493,6 +513,7 @@ const rootRouteChildren: RootRouteChildren = {
   GalleryRoute: GalleryRoute,
   IqacRoute: IqacRoute,
   NoticesRoute: NoticesRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
   StudentsRoute: StudentsRoute,
   SectionPageRoute: SectionPageRoute,
   ApiAskRoute: ApiAskRoute,

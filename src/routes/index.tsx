@@ -10,7 +10,7 @@ import { college, courseGroups, images, notices, programmes } from '@/lib/colleg
 import { seo } from '@/lib/seo';
 
 export const Route = createFileRoute('/')({ staticData: { sitemap: true },
-  head: () => seo({ title: 'K.L.P. College, Rewari | Kishan Lal Public College', description: 'Discover Kishan Lal Public College in Rewari: programmes, admissions, campus life, notices and student services.', path: '/' }),
+  head: () => ({ ...seo({ title: 'K.L.P. College, Rewari | Kishan Lal Public College', description: 'Discover Kishan Lal Public College in Rewari: programmes, admissions, campus life, notices and student services.', path: '/' }), scripts: [{ type: 'application/ld+json', children: JSON.stringify({ '@context': 'https://schema.org', '@type': 'CollegeOrUniversity', name: college.name, alternateName: college.shortName, url: siteUrl, foundingDate: '1964', telephone: college.phone, email: college.email, address: { '@type': 'PostalAddress', streetAddress: 'Delhi Road, Near Abhay Singh Chowk', addressLocality: 'Rewari', addressRegion: 'Haryana', postalCode: '123401', addressCountry: 'IN' } }) }] }),
   component: Home,
 });
 
