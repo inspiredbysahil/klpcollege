@@ -3,9 +3,9 @@ import { ArrowLeft, Download, Maximize2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { seo } from '@/lib/seo';
 
-type Search = { src?: string; title?: string };
+type Search = { src?: string | undefined; title?: string | undefined };
 export const Route = createFileRoute('/documents')({
-  validateSearch: (s: Record<string, unknown>): Search => ({ src: typeof s.src === 'string' ? s.src : undefined, title: typeof s.title === 'string' ? s.title.slice(0, 160) : undefined }),
+  validateSearch: (s: Record<string, unknown>): Search => ({ src: typeof s['src'] === 'string' ? s['src'] : undefined, title: typeof s['title'] === 'string' ? s['title'].slice(0, 160) : undefined }),
   head: () => ({ ...seo({ title: 'Document viewer | K.L.P. College, Rewari', description: 'View college notices, syllabi, fee structures and staff documents without leaving the site.', path: '/documents' }), meta: [...seo({ title: 'Document viewer | K.L.P. College, Rewari', description: 'View college notices, syllabi, fee structures and staff documents without leaving the site.', path: '/documents' }).meta, { name: 'robots', content: 'noindex' }] }),
   component: DocumentViewer,
 });

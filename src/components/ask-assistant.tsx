@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import ReactMarkdown from 'react-markdown';
 import { Button } from '@/components/ui/button';
 
-type Msg = { role: 'user' | 'assistant'; content: string; error?: boolean };
+type Msg = { role: 'user' | 'assistant'; content: string; error?: boolean | undefined };
 const STARTERS = ['Which programmes can I apply for in 2026–27?', 'How do I apply for admission?', 'What is the attendance requirement?', 'Which courses are self-finance?'];
 const KEY = 'klp-ask-session';
 const errorText = (s: string) => s === '429' ? 'Many students are asking right now. Please wait a moment and try again.' : s === '402' || s === '403' ? 'The assistant has reached its usage limit. Please call the college office at +91-1274-254964.' : 'Sorry, something went wrong. Please try again.';
@@ -29,9 +29,9 @@ export function AskAssistant({ compact = false }: { compact?: boolean }) {
       if (!res.ok || !res.body) { const j = await res.json().catch(() => ({})); update(j.error ?? errorText(String(res.status)), true); return; }
       const reader = res.body.getReader(); const dec = new TextDecoder(); let acc = '';
       for (;;) { const { done, value } = await reader.read(); if (done) break; acc += dec.decode(value, { stream: true });
-        const m = acc.match(/\[\[ERROR:(\d+)\]\]/); if (m) { update(errorText(m[1]), true); return; } update(acc); }
+        const m = acc.match(/\[\[ERROR:(\d+)\]\]/); if (m) { update(errorText(m[1] ?? '500'), true); return; } update(acc); }
       if (!acc.trim()) update('I could not find an answer. Please call the college office at +91-1274-254964.', true);
-    } catch (e) { if ((e as Error).name === 'AbortError') setMessages(m => { const last = m[m.length - 1]; return [...m.slice(0, -1), { ...last, content: (last.content || '') + '\n\n_Stopped._' }]; }); else update(errorText('500'), true); }
+    } catch (e) { if ((e as Error).name === 'AbortError') setMessages(m => { const last = m[m.length - 1]; return last ? [...m.slice(0, -1), { ...last, content: (last.content || '') + '\n\n_Stopped._' }] : m; }); else update(errorText('500'), true); }
     finally { setBusy(false); abort.current = null; }
   }
 
