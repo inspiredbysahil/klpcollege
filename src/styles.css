@@ -449,7 +449,8 @@
 @media (max-width: 370px) { .header-apply { display: none !important; } .quick-grid a > svg:last-child { display: block; } }
 @media (prefers-reduced-motion: reduce) { .ticker-track { animation: none; } .programme-reveal { opacity: 1; transform: none; } }
 .gallery-tile { display: block; height: auto; min-height: 0; white-space: normal; padding: 0; }
-.gallery-tile img { min-height: 0; aspect-ratio: 1.4; }
+.gallery-tile img { min-height: 0; aspect-ratio: 1.4; object-fit: cover; }
 .gallery-tile:nth-child(3n + 2) img { aspect-ratio: 1.1; }
 .gallery-tile:nth-child(4n + 3) img { aspect-ratio: 1.7; }
 .lightbox-controls { display: flex; justify-content: center; gap: 10px; }
+.lightbox-controls button { background: var(--card); color: var(--foreground); }
