@@ -29,11 +29,13 @@ import { Route as McpRouteImport } from './routes/mcp'
 import { Route as NoticesRouteImport } from './routes/notices'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as StudentsRouteImport } from './routes/students'
+import { Route as SyncStatusRouteImport } from './routes/sync-status'
 import { Route as SectionPageRouteImport } from './routes/$section.$page'
 import { Route as Char91DotwellKnownChar93OauthProtectedResourceRouteImport } from './routes/[.well-known]/oauth-protected-resource'
 import { Route as ApiAskRouteImport } from './routes/api/ask'
 import { Route as ProgrammesSlugRouteImport } from './routes/programmes.$slug'
 import { Route as ApiPublicDocRouteImport } from './routes/api/public/doc'
+import { Route as ApiPublicHooksSyncOfficialRouteImport } from './routes/api/public/hooks/sync-official'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -135,6 +137,11 @@ const StudentsRoute = StudentsRouteImport.update({
   path: '/students',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SyncStatusRoute = SyncStatusRouteImport.update({
+  id: '/sync-status',
+  path: '/sync-status',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SectionPageRoute = SectionPageRouteImport.update({
   id: '/$section/$page',
   path: '/$section/$page',
@@ -161,6 +168,12 @@ const ApiPublicDocRoute = ApiPublicDocRouteImport.update({
   path: '/api/public/doc',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiPublicHooksSyncOfficialRoute =
+  ApiPublicHooksSyncOfficialRouteImport.update({
+    id: '/api/public/hooks/sync-official',
+    path: '/api/public/hooks/sync-official',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -183,11 +196,13 @@ export interface FileRoutesByFullPath {
   '/notices': typeof NoticesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/students': typeof StudentsRoute
+  '/sync-status': typeof SyncStatusRoute
   '/$section/$page': typeof SectionPageRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/api/ask': typeof ApiAskRoute
   '/programmes/$slug': typeof ProgrammesSlugRoute
   '/api/public/doc': typeof ApiPublicDocRoute
+  '/api/public/hooks/sync-official': typeof ApiPublicHooksSyncOfficialRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -210,11 +225,13 @@ export interface FileRoutesByTo {
   '/notices': typeof NoticesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/students': typeof StudentsRoute
+  '/sync-status': typeof SyncStatusRoute
   '/$section/$page': typeof SectionPageRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/api/ask': typeof ApiAskRoute
   '/programmes/$slug': typeof ProgrammesSlugRoute
   '/api/public/doc': typeof ApiPublicDocRoute
+  '/api/public/hooks/sync-official': typeof ApiPublicHooksSyncOfficialRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -238,11 +255,13 @@ export interface FileRoutesById {
   '/notices': typeof NoticesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/students': typeof StudentsRoute
+  '/sync-status': typeof SyncStatusRoute
   '/$section/$page': typeof SectionPageRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/api/ask': typeof ApiAskRoute
   '/programmes/$slug': typeof ProgrammesSlugRoute
   '/api/public/doc': typeof ApiPublicDocRoute
+  '/api/public/hooks/sync-official': typeof ApiPublicHooksSyncOfficialRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -267,11 +286,13 @@ export interface FileRouteTypes {
     | '/notices'
     | '/sitemap.xml'
     | '/students'
+    | '/sync-status'
     | '/$section/$page'
     | '/.well-known/oauth-protected-resource'
     | '/api/ask'
     | '/programmes/$slug'
     | '/api/public/doc'
+    | '/api/public/hooks/sync-official'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -294,11 +315,13 @@ export interface FileRouteTypes {
     | '/notices'
     | '/sitemap.xml'
     | '/students'
+    | '/sync-status'
     | '/$section/$page'
     | '/.well-known/oauth-protected-resource'
     | '/api/ask'
     | '/programmes/$slug'
     | '/api/public/doc'
+    | '/api/public/hooks/sync-official'
   id:
     | '__root__'
     | '/'
@@ -321,11 +344,13 @@ export interface FileRouteTypes {
     | '/notices'
     | '/sitemap.xml'
     | '/students'
+    | '/sync-status'
     | '/$section/$page'
     | '/.well-known/oauth-protected-resource'
     | '/api/ask'
     | '/programmes/$slug'
     | '/api/public/doc'
+    | '/api/public/hooks/sync-official'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -349,11 +374,13 @@ export interface RootRouteChildren {
   NoticesRoute: typeof NoticesRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   StudentsRoute: typeof StudentsRoute
+  SyncStatusRoute: typeof SyncStatusRoute
   SectionPageRoute: typeof SectionPageRoute
   Char91DotwellKnownChar93OauthProtectedResourceRoute: typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   ApiAskRoute: typeof ApiAskRoute
   ProgrammesSlugRoute: typeof ProgrammesSlugRoute
   ApiPublicDocRoute: typeof ApiPublicDocRoute
+  ApiPublicHooksSyncOfficialRoute: typeof ApiPublicHooksSyncOfficialRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -498,6 +525,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof StudentsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/sync-status': {
+      id: '/sync-status'
+      path: '/sync-status'
+      fullPath: '/sync-status'
+      preLoaderRoute: typeof SyncStatusRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/$section/$page': {
       id: '/$section/$page'
       path: '/$section/$page'
@@ -533,6 +567,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiPublicDocRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/public/hooks/sync-official': {
+      id: '/api/public/hooks/sync-official'
+      path: '/api/public/hooks/sync-official'
+      fullPath: '/api/public/hooks/sync-official'
+      preLoaderRoute: typeof ApiPublicHooksSyncOfficialRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -557,12 +598,14 @@ const rootRouteChildren: RootRouteChildren = {
   NoticesRoute: NoticesRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   StudentsRoute: StudentsRoute,
+  SyncStatusRoute: SyncStatusRoute,
   SectionPageRoute: SectionPageRoute,
   Char91DotwellKnownChar93OauthProtectedResourceRoute:
     Char91DotwellKnownChar93OauthProtectedResourceRoute,
   ApiAskRoute: ApiAskRoute,
   ProgrammesSlugRoute: ProgrammesSlugRoute,
   ApiPublicDocRoute: ApiPublicDocRoute,
+  ApiPublicHooksSyncOfficialRoute: ApiPublicHooksSyncOfficialRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
