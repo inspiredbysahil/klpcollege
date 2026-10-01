@@ -16,3 +16,5 @@
 - Official-site content lives as a generated snapshot in `src/content/official.json` (server-only, read via `src/lib/official.server.ts`) plus `official-index.ts` for navigation, rendered by the `/$section/$page` route; keeps visitors on this site without hand-copying pages.
 - Official documents and images are served through `/api/public/doc` (klpcollege.ac.in allowlist) and viewed on `/documents`; never link visitors straight to official PDFs.
 - The admissions assistant (`/api/ask`) answers only from the snapshot context built in `official.server.ts`; keeps answers grounded and citeable.
+- Keep homepage motion in `src/components/portal-motion.tsx` and shared chrome in `SiteLayout`; centralizing reduced-motion behavior and navigation prevents page-to-page drift.
+- Gallery cards derive from the official photo snapshot in `src/content/gallery-index.json`; this keeps the lightbox tied to actual college images rather than invented media.
