@@ -6,7 +6,7 @@ import { FallbackImg } from '@/components/fallback-img';
 import { Reveal, CountUp } from '@/components/portal-motion';
 import heroFallback from '@/assets/hero-fallback.jpg';
 import { docHref } from '@/lib/official-nav';
-import { college, courseGroups, images, notices, programmes } from '@/lib/college';
+import { college, courseGroups, images, notices, programmes, siteUrl } from '@/lib/college';
 import { seo } from '@/lib/seo';
 
 export const Route = createFileRoute('/')({ staticData: { sitemap: true },
