@@ -15,6 +15,13 @@
       "when": 1790858319247,
       "tag": "0001_enable_cron",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1790858523516,
+      "tag": "0002_restrict_sync_runs",
+      "breakpoints": true
     }
   ]
 }
