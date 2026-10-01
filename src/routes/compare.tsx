@@ -10,7 +10,7 @@ const initial = (search: Record<string, unknown>) => typeof search['programmes']
   ? [...new Set(search['programmes'].split(','))].filter(slug => programmes.some(p => p.slug === slug)).slice(0, MAX)
   : [];
 
-export const Route = createFileRoute('/compare')({
+export const Route = createFileRoute('/compare')({ staticData: { sitemap: true },
   validateSearch: (search: Record<string, unknown>): { programmes?: string } => typeof search['programmes'] === 'string' ? { programmes: search['programmes'] } : {},
   head: () => seo({ title: 'Compare Programmes | K.L.P. College, Rewari', description: 'Compare K.L.P. College programmes by study level, eligibility, duration and official admission links. Check current requirements before applying.', path: '/compare' }),
   component: Compare,

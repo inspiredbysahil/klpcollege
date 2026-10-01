@@ -6,7 +6,7 @@ import { getOfficialPage } from '@/lib/official.functions';
 import { docHref, pagesInSection, sectionHome, sectionTitles } from '@/lib/official-nav';
 import { seo } from '@/lib/seo';
 
-export const Route = createFileRoute('/$section/$page')({
+export const Route = createFileRoute('/$section/$page')({ staticData: { sitemap: true },
   loader: async ({ params }) => {
     if (!officialIndex.some(p => p.section === params.section && p.slug === params.page)) throw notFound();
     const page = await getOfficialPage({ data: { section: params.section, slug: params.page } });

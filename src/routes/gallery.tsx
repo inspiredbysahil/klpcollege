@@ -6,7 +6,7 @@ import { X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { SectionHeading } from '@/components/site-layout';
 import photos from '@/content/gallery-index.json';
-export const Route = createFileRoute('/gallery')({
+export const Route = createFileRoute('/gallery')({ staticData: { sitemap: true },
   head: () => seo({ title: 'Gallery | K.L.P. College, Rewari', description: 'Browse photographs, videos and official social channels from K.L.P. College, Rewari.', path: '/gallery' }),
   component: Gallery,
 });

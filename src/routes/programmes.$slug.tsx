@@ -2,10 +2,10 @@ import { createFileRoute, Link, notFound } from '@tanstack/react-router';
 import { ArrowUpRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { PageIntro, SectionHeading } from '@/components/site-layout';
-import { college, officialLinks, programmeRules, programmes } from '@/lib/college';
+import { college, officialLinks, programmeRules, programmes, siteUrl } from '@/lib/college';
 import { seo } from '@/lib/seo';
 
-export const Route = createFileRoute('/programmes/$slug')({
+export const Route = createFileRoute('/programmes/$slug')({ staticData: { sitemap: true },
   loader: ({ params }) => {
     const programme = programmes.find((p) => p.slug === params.slug);
     if (!programme) throw notFound();
@@ -14,11 +14,11 @@ export const Route = createFileRoute('/programmes/$slug')({
   head: ({ loaderData, params }) => {
     if (!loaderData) return { meta: [{ title: 'Programme not found | K.L.P. College' }, { name: 'robots', content: 'noindex' }] };
     const p = loaderData.programme;
-    return seo({
+    return { ...seo({
       title: `${p.name} | K.L.P. College, Rewari`,
       description: `${p.name} — ${p.level.toLowerCase()} programme in ${p.stream} at Kishan Lal Public College, Rewari. Eligibility, duration and official admission links.`,
       path: `/programmes/${params.slug}`,
-    });
+    }), scripts: [{ type: 'application/ld+json', children: JSON.stringify({ '@context': 'https://schema.org', '@type': 'Course', name: p.name, description: `${p.level} programme in ${p.stream} at ${college.name}, Rewari.`, educationalCredentialAwarded: p.name, provider: { '@type': 'CollegeOrUniversity', name: college.name, url: siteUrl } }) }] };
   },
   notFoundComponent: ProgrammeNotFound,
   component: ProgrammePage,
