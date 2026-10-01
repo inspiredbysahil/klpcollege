@@ -18,3 +18,4 @@
 - The admissions assistant (`/api/ask`) answers only from the snapshot context built in `official.server.ts`; keeps answers grounded and citeable.
 - Keep homepage motion in `src/components/portal-motion.tsx` and shared chrome in `SiteLayout`; centralizing reduced-motion behavior and navigation prevents page-to-page drift.
 - Gallery cards derive from the official photo snapshot in `src/content/gallery-index.json`; this keeps the lightbox tied to actual college images rather than invented media.
+- MCP tools live in `src/lib/mcp/` (public, read-only, sourced from `college.ts` and the official snapshot); keeps agent answers consistent with the site and never exposes private data.
