@@ -454,3 +454,14 @@
 .gallery-tile:nth-child(4n + 3) img { aspect-ratio: 1.7; }
 .lightbox-controls { display: flex; justify-content: center; gap: 10px; }
 .lightbox-controls button { background: var(--card); color: var(--foreground); }
+
+.sync-badge { display: inline-flex; align-items: center; gap: 8px; margin: 0 0 18px; padding: 6px 12px; border-radius: 999px; font-size: 13px; font-weight: 600; background: color-mix(in oklch, var(--primary) 10%, transparent); color: var(--primary); text-decoration: none; }
+.sync-badge-warn { background: color-mix(in oklch, var(--accent) 25%, transparent); color: var(--foreground); }
+.sync-counts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin: 8px 0 40px; }
+.sync-counts div { padding: 20px; border-radius: var(--radius); background: var(--card); box-shadow: var(--shadow-card); display: grid; gap: 4px; }
+.sync-counts strong { font-size: 32px; color: var(--primary); }
+.sync-table { display: grid; gap: 10px; }
+.sync-table [role="row"] { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 12px; padding: 14px 18px; border-radius: var(--radius); background: var(--card); }
+.sync-table small { grid-column: 1 / -1; color: var(--muted-foreground); overflow-wrap: anywhere; }
+.sync-row-warn { border-left: 4px solid var(--accent); }
+@media (max-width: 640px) { .sync-counts, .sync-table [role="row"] { grid-template-columns: 1fr; } }
