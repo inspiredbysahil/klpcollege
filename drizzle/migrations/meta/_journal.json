@@ -1,5 +1,20 @@
 {
   "version": "7",
   "dialect": "postgresql",
-  "entries": []
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1790858224699,
+      "tag": "0000_official_sync",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1790858319247,
+      "tag": "0001_enable_cron",
+      "breakpoints": true
+    }
+  ]
 }

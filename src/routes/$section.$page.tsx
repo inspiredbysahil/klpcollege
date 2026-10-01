@@ -5,6 +5,7 @@ import { officialIndex } from '@/content/official-index';
 import { getOfficialPage } from '@/lib/official.functions';
 import { docHref, pagesInSection, sectionHome, sectionTitles } from '@/lib/official-nav';
 import { seo } from '@/lib/seo';
+import { SyncBadge } from '@/components/sync-badge';
 
 export const Route = createFileRoute('/$section/$page')({ staticData: { sitemap: true },
   loader: async ({ params }) => {
@@ -33,6 +34,7 @@ function OfficialPageView() {
         <nav>{siblings.map(s => <Link key={s.slug} to="/$section/$page" params={{ section, page: s.slug }} activeProps={{ className: 'official-active' }}>{s.label}</Link>)}</nav>
       </aside>
       <article className="official-body">
+        {['tenders', 'admission-2026-27', 'news-media'].includes(page.slug) && <SyncBadge/>}
         {page.empty ? <div className="official-empty"><h2>No details published yet</h2><p>The official college website does not currently show content on this page. Please check again later or contact the college office.</p></div>
           : <div className="official-prose" dangerouslySetInnerHTML={{ __html: page.html }} />}
         {inlineDocs && <div className="official-docs"><h2>Documents</h2><ul>{page.documents.map(d => <li key={d.href}><a href={docHref(d.href, d.label)}><FileText size={17}/><span>{d.label}</span></a></li>)}</ul></div>}

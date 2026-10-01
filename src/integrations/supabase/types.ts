@@ -14,7 +14,69 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      official_items: {
+        Row: {
+          date_text: string | null
+          first_seen: string
+          href: string
+          id: string
+          kind: string
+          last_seen: string
+          source_url: string
+          title: string
+        }
+        Insert: {
+          date_text?: string | null
+          first_seen?: string
+          href: string
+          id?: string
+          kind?: string
+          last_seen?: string
+          source_url: string
+          title: string
+        }
+        Update: {
+          date_text?: string | null
+          first_seen?: string
+          href?: string
+          id?: string
+          kind?: string
+          last_seen?: string
+          source_url?: string
+          title?: string
+        }
+        Relationships: []
+      }
+      sync_runs: {
+        Row: {
+          added: number
+          error: string | null
+          finished_at: string | null
+          found: number
+          id: string
+          ok: boolean
+          started_at: string
+        }
+        Insert: {
+          added?: number
+          error?: string | null
+          finished_at?: string | null
+          found?: number
+          id?: string
+          ok?: boolean
+          started_at?: string
+        }
+        Update: {
+          added?: number
+          error?: string | null
+          finished_at?: string | null
+          found?: number
+          id?: string
+          ok?: boolean
+          started_at?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
