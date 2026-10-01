@@ -25,10 +25,12 @@ import { Route as DocumentsRouteImport } from './routes/documents'
 import { Route as FacultyRouteImport } from './routes/faculty'
 import { Route as GalleryRouteImport } from './routes/gallery'
 import { Route as IqacRouteImport } from './routes/iqac'
+import { Route as McpRouteImport } from './routes/mcp'
 import { Route as NoticesRouteImport } from './routes/notices'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as StudentsRouteImport } from './routes/students'
 import { Route as SectionPageRouteImport } from './routes/$section.$page'
+import { Route as Char91DotwellKnownChar93OauthProtectedResourceRouteImport } from './routes/[.well-known]/oauth-protected-resource'
 import { Route as ApiAskRouteImport } from './routes/api/ask'
 import { Route as ProgrammesSlugRouteImport } from './routes/programmes.$slug'
 import { Route as ApiPublicDocRouteImport } from './routes/api/public/doc'
@@ -113,6 +115,11 @@ const IqacRoute = IqacRouteImport.update({
   path: '/iqac',
   getParentRoute: () => rootRouteImport,
 } as any)
+const McpRoute = McpRouteImport.update({
+  id: '/mcp',
+  path: '/mcp',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const NoticesRoute = NoticesRouteImport.update({
   id: '/notices',
   path: '/notices',
@@ -133,6 +140,12 @@ const SectionPageRoute = SectionPageRouteImport.update({
   path: '/$section/$page',
   getParentRoute: () => rootRouteImport,
 } as any)
+const Char91DotwellKnownChar93OauthProtectedResourceRoute =
+  Char91DotwellKnownChar93OauthProtectedResourceRouteImport.update({
+    id: '/.well-known/oauth-protected-resource',
+    path: '/.well-known/oauth-protected-resource',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const ApiAskRoute = ApiAskRouteImport.update({
   id: '/api/ask',
   path: '/api/ask',
@@ -166,10 +179,12 @@ export interface FileRoutesByFullPath {
   '/faculty': typeof FacultyRoute
   '/gallery': typeof GalleryRoute
   '/iqac': typeof IqacRoute
+  '/mcp': typeof McpRoute
   '/notices': typeof NoticesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/students': typeof StudentsRoute
   '/$section/$page': typeof SectionPageRoute
+  '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/api/ask': typeof ApiAskRoute
   '/programmes/$slug': typeof ProgrammesSlugRoute
   '/api/public/doc': typeof ApiPublicDocRoute
@@ -191,10 +206,12 @@ export interface FileRoutesByTo {
   '/faculty': typeof FacultyRoute
   '/gallery': typeof GalleryRoute
   '/iqac': typeof IqacRoute
+  '/mcp': typeof McpRoute
   '/notices': typeof NoticesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/students': typeof StudentsRoute
   '/$section/$page': typeof SectionPageRoute
+  '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/api/ask': typeof ApiAskRoute
   '/programmes/$slug': typeof ProgrammesSlugRoute
   '/api/public/doc': typeof ApiPublicDocRoute
@@ -217,10 +234,12 @@ export interface FileRoutesById {
   '/faculty': typeof FacultyRoute
   '/gallery': typeof GalleryRoute
   '/iqac': typeof IqacRoute
+  '/mcp': typeof McpRoute
   '/notices': typeof NoticesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/students': typeof StudentsRoute
   '/$section/$page': typeof SectionPageRoute
+  '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/api/ask': typeof ApiAskRoute
   '/programmes/$slug': typeof ProgrammesSlugRoute
   '/api/public/doc': typeof ApiPublicDocRoute
@@ -244,10 +263,12 @@ export interface FileRouteTypes {
     | '/faculty'
     | '/gallery'
     | '/iqac'
+    | '/mcp'
     | '/notices'
     | '/sitemap.xml'
     | '/students'
     | '/$section/$page'
+    | '/.well-known/oauth-protected-resource'
     | '/api/ask'
     | '/programmes/$slug'
     | '/api/public/doc'
@@ -269,10 +290,12 @@ export interface FileRouteTypes {
     | '/faculty'
     | '/gallery'
     | '/iqac'
+    | '/mcp'
     | '/notices'
     | '/sitemap.xml'
     | '/students'
     | '/$section/$page'
+    | '/.well-known/oauth-protected-resource'
     | '/api/ask'
     | '/programmes/$slug'
     | '/api/public/doc'
@@ -294,10 +317,12 @@ export interface FileRouteTypes {
     | '/faculty'
     | '/gallery'
     | '/iqac'
+    | '/mcp'
     | '/notices'
     | '/sitemap.xml'
     | '/students'
     | '/$section/$page'
+    | '/.well-known/oauth-protected-resource'
     | '/api/ask'
     | '/programmes/$slug'
     | '/api/public/doc'
@@ -320,10 +345,12 @@ export interface RootRouteChildren {
   FacultyRoute: typeof FacultyRoute
   GalleryRoute: typeof GalleryRoute
   IqacRoute: typeof IqacRoute
+  McpRoute: typeof McpRoute
   NoticesRoute: typeof NoticesRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   StudentsRoute: typeof StudentsRoute
   SectionPageRoute: typeof SectionPageRoute
+  Char91DotwellKnownChar93OauthProtectedResourceRoute: typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   ApiAskRoute: typeof ApiAskRoute
   ProgrammesSlugRoute: typeof ProgrammesSlugRoute
   ApiPublicDocRoute: typeof ApiPublicDocRoute
@@ -443,6 +470,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IqacRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/mcp': {
+      id: '/mcp'
+      path: '/mcp'
+      fullPath: '/mcp'
+      preLoaderRoute: typeof McpRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/notices': {
       id: '/notices'
       path: '/notices'
@@ -469,6 +503,13 @@ declare module '@tanstack/react-router' {
       path: '/$section/$page'
       fullPath: '/$section/$page'
       preLoaderRoute: typeof SectionPageRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/.well-known/oauth-protected-resource': {
+      id: '/.well-known/oauth-protected-resource'
+      path: '/.well-known/oauth-protected-resource'
+      fullPath: '/.well-known/oauth-protected-resource'
+      preLoaderRoute: typeof Char91DotwellKnownChar93OauthProtectedResourceRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/api/ask': {
@@ -512,10 +553,13 @@ const rootRouteChildren: RootRouteChildren = {
   FacultyRoute: FacultyRoute,
   GalleryRoute: GalleryRoute,
   IqacRoute: IqacRoute,
+  McpRoute: McpRoute,
   NoticesRoute: NoticesRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   StudentsRoute: StudentsRoute,
   SectionPageRoute: SectionPageRoute,
+  Char91DotwellKnownChar93OauthProtectedResourceRoute:
+    Char91DotwellKnownChar93OauthProtectedResourceRoute,
   ApiAskRoute: ApiAskRoute,
   ProgrammesSlugRoute: ProgrammesSlugRoute,
   ApiPublicDocRoute: ApiPublicDocRoute,
