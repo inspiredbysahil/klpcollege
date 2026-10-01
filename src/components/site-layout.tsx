@@ -64,8 +64,8 @@ export function SiteLayout({ children }: { children: React.ReactNode }) {
   </>;
 }
 
-export function PageIntro({ eyebrow, title, description, image }: { eyebrow: string; title: string; description: string; image?: string }) {
-   return <section className={`page-intro ${image ? 'page-intro-image' : ''}`}>{image && <><img className="page-intro-photo" src={image} alt="" /><div className="page-intro-shade" /></>}<div className="site-container"><p className="eyebrow light-eyebrow">{eyebrow}</p><h1>{title}</h1><p>{description}</p></div></section>;
+export function PageIntro({ eyebrow, title, description, image, imageAlt = "" }: { eyebrow: string; title: string; description: string; image?: string; imageAlt?: string }) {
+   return <section className={`page-intro ${image ? 'page-intro-image' : ''}`}>{image && <><img className="page-intro-photo" src={image} alt={imageAlt} /><div className="page-intro-shade" /></>}<div className="site-container"><p className="eyebrow light-eyebrow">{eyebrow}</p><h1>{title}</h1><p>{description}</p></div></section>;
 }
 
 export function SectionHeading({ eyebrow, title, description }: { eyebrow: string; title: string; description?: string }) {

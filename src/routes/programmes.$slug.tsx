@@ -5,7 +5,7 @@ import { PageIntro, SectionHeading } from '@/components/site-layout';
 import { college, officialLinks, programmeRules, programmes } from '@/lib/college';
 import { seo } from '@/lib/seo';
 
-export const Route = createFileRoute('/programmes/$slug')({
+export const Route = createFileRoute('/programmes/$slug')({ staticData: { sitemap: true },
   loader: ({ params }) => {
     const programme = programmes.find((p) => p.slug === params.slug);
     if (!programme) throw notFound();

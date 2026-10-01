@@ -7,7 +7,7 @@ import { buildContext } from '@/lib/official.server';
 const Body = z.object({ messages: z.array(z.object({ role: z.enum(['user', 'assistant']), content: z.string().max(4000) })).min(1).max(20) });
 const RUN = 'X-Lovable-AIG-Run-ID';
 
-export const Route = createFileRoute('/api/ask')({
+export const Route = createFileRoute('/api/ask')({ staticData: { sitemap: false },
   server: {
     handlers: {
       POST: async ({ request }) => {

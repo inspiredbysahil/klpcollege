@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 import { seo } from '@/lib/seo';
 
 type Search = { src?: string | undefined; title?: string | undefined };
-export const Route = createFileRoute('/documents')({
+export const Route = createFileRoute('/documents')({ staticData: { sitemap: false },
   validateSearch: (s: Record<string, unknown>): Search => ({ src: typeof s['src'] === 'string' ? s['src'] : undefined, title: typeof s['title'] === 'string' ? s['title'].slice(0, 160) : undefined }),
   head: () => ({ ...seo({ title: 'Document viewer | K.L.P. College, Rewari', description: 'View college notices, syllabi, fee structures and staff documents without leaving the site.', path: '/documents' }), meta: [...seo({ title: 'Document viewer | K.L.P. College, Rewari', description: 'View college notices, syllabi, fee structures and staff documents without leaving the site.', path: '/documents' }).meta, { name: 'robots', content: 'noindex' }] }),
   component: DocumentViewer,

@@ -4,7 +4,7 @@ const ALLOWED_HOSTS = new Set(['www.klpcollege.ac.in', 'klpcollege.ac.in', 'coll
 const ALLOWED_TYPES = /^(application\/pdf|image\/|application\/(msword|vnd\.openxmlformats|vnd\.ms-)|application\/octet-stream)/;
 const MAX_BYTES = 40 * 1024 * 1024;
 
-export const Route = createFileRoute('/api/public/doc')({
+export const Route = createFileRoute('/api/public/doc')({ staticData: { sitemap: false },
   server: {
     handlers: {
       GET: async ({ request }) => {

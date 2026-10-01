@@ -9,7 +9,7 @@ import { docHref } from '@/lib/official-nav';
 import { college, courseGroups, images, notices, programmes } from '@/lib/college';
 import { seo } from '@/lib/seo';
 
-export const Route = createFileRoute('/')({
+export const Route = createFileRoute('/')({ staticData: { sitemap: true },
   head: () => seo({ title: 'K.L.P. College, Rewari | Kishan Lal Public College', description: 'Discover Kishan Lal Public College in Rewari: programmes, admissions, campus life, notices and student services.', path: '/' }),
   component: Home,
 });

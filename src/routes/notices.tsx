@@ -6,7 +6,7 @@ import { noticeCategories, notices, officialLinks } from '@/lib/college';
 import { docHref } from '@/lib/official-nav';
 import { seo } from '@/lib/seo';
 
-export const Route = createFileRoute('/notices')({
+export const Route = createFileRoute('/notices')({ staticData: { sitemap: true },
   validateSearch: (s: Record<string, unknown>): { q?: string | undefined; category?: string | undefined } => ({
     q: typeof s['q'] === 'string' && s['q'] ? s['q'] : undefined,
     category: typeof s['category'] === 'string' && s['category'] ? s['category'] : undefined,
