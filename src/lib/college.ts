@@ -157,4 +157,4 @@ export const programmes: Programme[] = [
   { slug: 'bca', name: 'BCA', level: 'Undergraduate', stream: 'Science & Technology', eligibility: '10+2 with 45% aggregate or eligible three-year polytechnic diploma (historical course criteria)', duration: '3 years (historical course structure)', source: 'https://www.klpcollege.ac.in/course/4', historical: true },
 ];
 
-export const noticeCategories = ['Admission', 'Examination', 'Campus', 'Notice'] as const;
+export const noticeCategories = ['Admission', 'Examination', 'Campus', 'Tender', 'Notice'] as const;
