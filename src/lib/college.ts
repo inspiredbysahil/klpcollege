@@ -36,14 +36,14 @@ export const officialLinks = {
   courses: '/academics/courses-offered',
   admission: '/students/admission-2026-27',
   campus: '/about/campus-at-a-glance',
-  notices: 'https://www.klpcollege.ac.in/page/noticesannouncements',
+  notices: '/students/news-media',
   fees: '/academics/fee-structure-2025-26',
-  students: 'https://www.klpcollege.ac.in/page/students',
-  faculty: 'https://www.klpcollege.ac.in/page/faculty',
-  gallery: 'https://www.klpcollege.ac.in/page/mediagallery',
-  activities: 'https://www.klpcollege.ac.in/page/eventsactivities',
-  iqac: 'https://www.klpcollege.ac.in/page/iqac',
-  alumni: 'https://www.klpcollege.ac.in/page/alumni',
+  students: '/students',
+  faculty: '/faculty',
+  gallery: '/gallery',
+  activities: '/activities',
+  iqac: '/iqac',
+  alumni: '/alumni',
 };
 
 export const sectionLinks = {

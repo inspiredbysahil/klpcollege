@@ -3,6 +3,7 @@ import { ArrowUpRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { PageIntro, SectionHeading } from '@/components/site-layout';
 import { noticeCategories, notices, officialLinks } from '@/lib/college';
+import { docHref } from '@/lib/official-nav';
 import { seo } from '@/lib/seo';
 
 export const Route = createFileRoute('/notices')({
@@ -29,6 +30,6 @@ function Notices() {
       {noticeCategories.map(c => <Button key={c} size="sm" variant={active === c ? 'default' : 'outline'} aria-pressed={active === c} onClick={() => setCategory(c)}>{c === 'Notice' ? 'General' : c}</Button>)}
     </div>
     <p className="sr-only" aria-live="polite">{results.length} notices found</p>
-    <div className="notice-list">{results.length === 0 ? <p className="notice-empty">No notices match your search. Try another category or check the <a className="text-link" href={officialLinks.notices}>official archive</a>.</p> : results.map((notice, index) => <a key={notice.title} href={notice.href} target="_blank" rel="noopener noreferrer" className="notice-row"><span className="notice-index">0{index+1}</span><span className="notice-main"><small>{notice.category === 'Notice' ? 'General' : notice.category} · {notice.date}</small><strong>{notice.title}</strong></span><ArrowUpRight size={19}/></a>)}</div>
+    <div className="notice-list">{results.length === 0 ? <p className="notice-empty">No notices match your search. Try another category or check the <a className="text-link" href={officialLinks.notices}>official archive</a>.</p> : results.map((notice, index) => <a key={notice.title} href={docHref(notice.href, notice.title)} className="notice-row"><span className="notice-index">0{index+1}</span><span className="notice-main"><small>{notice.category === 'Notice' ? 'General' : notice.category} · {notice.date}</small><strong>{notice.title}</strong></span><ArrowUpRight size={19}/></a>)}</div>
   </div></div></section></>;
 }
