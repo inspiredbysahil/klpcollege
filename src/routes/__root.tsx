@@ -77,6 +77,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { name: "author", content: "Kishan Lal Public College" },
+      { name: "google-site-verification", content: "DXocw_5y2GSO8LxghUGI869FR4zyNhMYSphuZaLjLYI" },
     ],
     links: [
       {
