@@ -17,12 +17,14 @@ export const getSyncFeed = createServerFn({ method: 'GET' }).handler(async (): P
       auth: { persistSession: false, autoRefreshToken: false },
       global: { fetch: (input, init) => { const h = new Headers(init?.headers); if (key.startsWith('sb_') && h.get('Authorization') === `Bearer ${key}`) h.delete('Authorization'); h.set('apikey', key); return fetch(input, { ...init, headers: h }); } },
     });
+    // Run history is not publicly readable; only safe summary fields are returned (no error details).
+    const { supabaseAdmin: admin } = await import('@/integrations/supabase/client.server');
     const [items, runs, success] = await Promise.all([
       db.from('official_items').select('kind,title,date_text,href,first_seen').order('first_seen', { ascending: false }).limit(150),
-      db.from('sync_runs').select('started_at,finished_at,ok,found,added,error').order('started_at', { ascending: false }).limit(10),
-      db.from('sync_runs').select('finished_at').eq('ok', true).order('started_at', { ascending: false }).limit(1),
+      admin.from('sync_runs').select('started_at,finished_at,ok,found,added').order('started_at', { ascending: false }).limit(10),
+      admin.from('sync_runs').select('finished_at').eq('ok', true).order('started_at', { ascending: false }).limit(1),
     ]);
-    return { items: items.data ?? [], runs: runs.data ?? [], lastRun: runs.data?.[0] ?? null, lastSuccess: success.data?.[0]?.finished_at ?? null };
+    return { items: items.data ?? [], runs: (runs.data ?? []).map(r => ({ ...r, error: null })), lastRun: runs.data?.[0] ? { ...runs.data[0], error: null } : null, lastSuccess: success.data?.[0]?.finished_at ?? null };
   } catch (e) {
     console.error('sync feed', e);
     return empty;
