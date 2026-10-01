@@ -340,3 +340,4 @@
 .ask-panel-head span { display: flex; gap: 14px; align-items: center; font-size: 13px; } .ask-panel-head a { text-decoration: underline; } .ask-panel-head button { font-size: 22px; line-height: 1; }
 @media (max-width: 640px) { .ask-fab span { display: none; } .ask-fab { padding: 14px; right: 14px; bottom: 14px; } .ask-panel { right: 12px; bottom: 74px; } }
 @media print { .ask-fab, .ask-panel { display: none; } }
+.official-prose table { overflow-wrap: normal; word-break: normal; } .official-prose td, .official-prose th { min-width: 90px; }

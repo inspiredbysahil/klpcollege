@@ -4,3 +4,7 @@
 - [x] Add shareable programme comparison with verified or clearly marked historical criteria
 - [x] Expand major-section navigation and official resource directories
 - [x] Check all content pages and programme routes at desktop and mobile widths
+
+- [x] Image fallbacks for crest and hero
+- [x] Official content copied into in-site pages + in-site PDF viewer
+- [x] Admissions question assistant

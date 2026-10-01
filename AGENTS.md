@@ -13,3 +13,6 @@
 - Use the shared `SiteLayout` and page-intro components for public routes; this keeps navigation and presentation consistent.
 - Build route head() metadata with `seo()` from `src/lib/seo.ts`; keeps canonical, Open Graph and Twitter previews consistent.
 - Keep comparison criteria and official section-directory destinations in `src/lib/college.ts`; this preserves a single, source-aware record across programme and service pages.
+- Official-site content lives as a generated snapshot in `src/content/official.json` (server-only, read via `src/lib/official.server.ts`) plus `official-index.ts` for navigation, rendered by the `/$section/$page` route; keeps visitors on this site without hand-copying pages.
+- Official documents and images are served through `/api/public/doc` (klpcollege.ac.in allowlist) and viewed on `/documents`; never link visitors straight to official PDFs.
+- The admissions assistant (`/api/ask`) answers only from the snapshot context built in `official.server.ts`; keeps answers grounded and citeable.
