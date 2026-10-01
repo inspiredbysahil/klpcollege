@@ -45,9 +45,9 @@ function ProgrammePage() {
       <SectionHeading eyebrow="Academic rules" title="What every student should know."/>
       <ul className="programme-list">{programmeRules.items.map((r) => <li key={r}>{r}</li>)}</ul>
       <div className="academic-actions">
-        <Button asChild size="lg"><a href={officialLinks.admission} target="_blank" rel="noopener noreferrer">Official admission information <ArrowUpRight size={17}/></a></Button>
+        <Button asChild size="lg"><a href={officialLinks.admission}>Official admission information <ArrowUpRight size={17}/></a></Button>
         <Button asChild variant="outline" size="lg"><Link to="/compare" search={{ programmes: p.slug }}>Compare programmes <ArrowUpRight size={17}/></Link></Button>
-        <Button asChild variant="outline" size="lg"><a href={officialLinks.fees} target="_blank" rel="noopener noreferrer">Fee structure <ArrowUpRight size={17}/></a></Button>
+        <Button asChild variant="outline" size="lg"><a href={officialLinks.fees}>Fee structure <ArrowUpRight size={17}/></a></Button>
         <Button asChild variant="outline" size="lg"><a href={`tel:${college.phone.replaceAll('-', '')}`}>Call {college.phone}</a></Button>
       </div>
     </div></section>

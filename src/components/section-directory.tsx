@@ -1,6 +1,9 @@
+import { Link } from '@tanstack/react-router';
 import { ArrowUpRight } from 'lucide-react';
+import { officialSnapshotDate } from '@/content/official-index';
+import { pagesInSection } from '@/lib/official-nav';
 import { PageIntro, SectionHeading } from '@/components/site-layout';
-import { officialLinks, sectionLinks } from '@/lib/college';
+import { officialLinks, type sectionLinks } from '@/lib/college';
 
 type SectionKey = keyof typeof sectionLinks;
 const directories: Record<SectionKey, { eyebrow: string; title: string; description: string; heading: string; note: string; official: string }> = {
@@ -15,5 +18,6 @@ const directories: Record<SectionKey, { eyebrow: string; title: string; descript
 };
 export function SectionDirectory({ section }: { section: SectionKey }) {
   const data = directories[section];
-  return <><PageIntro eyebrow={data.eyebrow} title={data.title} description={data.description}/><section className="section"><div className="site-container"><div className="directory-heading"><SectionHeading eyebrow="Official directory" title={data.heading} description={data.note}/><a className="text-link" href={data.official} target="_blank" rel="noopener noreferrer">View official section <ArrowUpRight size={16}/></a></div><div className="directory-grid">{sectionLinks[section].map(item => <a key={item.href} href={item.href} target="_blank" rel="noopener noreferrer">{item.label}<ArrowUpRight size={17}/></a>)}</div></div></section></>;
+  const items = pagesInSection(section);
+  return <><PageIntro eyebrow={data.eyebrow} title={data.title} description={data.description}/><section className="section"><div className="site-container"><div className="directory-heading"><SectionHeading eyebrow="Section directory" title={data.heading} description={`Every page below opens here on this website. Content copied from the official college website on ${officialSnapshotDate}.`}/></div><div className="directory-grid">{items.map(item => <Link key={item.slug} to="/$section/$page" params={{ section, page: item.slug }}><span>{item.label}{item.empty && <small className="directory-empty">No details published yet</small>}</span><ArrowUpRight size={17}/></Link>)}</div></div></section></>;
 }

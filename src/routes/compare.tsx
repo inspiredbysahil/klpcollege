@@ -43,7 +43,7 @@ function Compare() {
           <div className="compare-label">Field of study</div>{chosen.map(p => <div className="compare-cell" key={p.slug}>{p.stream}</div>)}
           <div className="compare-label">Eligibility</div>{chosen.map(p => <div className="compare-cell" key={p.slug}>{p.eligibility || 'Confirm with admissions'}{p.source && <a className="compare-source" href={p.source} target="_blank" rel="noopener noreferrer">Historical course source <ArrowUpRight size={13}/></a>}</div>)}
           <div className="compare-label">Duration</div>{chosen.map(p => <div className="compare-cell" key={p.slug}>{p.duration || 'Confirm with admissions'}</div>)}
-          <div className="compare-label">Admissions</div>{chosen.map(p => <div className="compare-cell" key={p.slug}><a href={officialLinks.admission} target="_blank" rel="noopener noreferrer">Current admission details <ArrowUpRight size={14}/></a><a className="compare-source" href={college.apply} target="_blank" rel="noopener noreferrer">Haryana application portal <ArrowUpRight size={13}/></a></div>)}
+          <div className="compare-label">Admissions</div>{chosen.map(p => <div className="compare-cell" key={p.slug}><a href={officialLinks.admission}>Current admission details <ArrowUpRight size={14}/></a><a className="compare-source" href={college.apply} target="_blank" rel="noopener noreferrer">Haryana application portal <ArrowUpRight size={13}/></a></div>)}
         </div></div>
         <p className="compare-disclaimer">Historical course information may not reflect the current session. Confirm eligibility and duration in the latest official admission notice before applying.</p>
       </>}

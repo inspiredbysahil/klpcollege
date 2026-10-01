@@ -17,15 +17,20 @@ import { Route as AcademicsRouteImport } from './routes/academics'
 import { Route as ActivitiesRouteImport } from './routes/activities'
 import { Route as AdmissionsRouteImport } from './routes/admissions'
 import { Route as AlumniRouteImport } from './routes/alumni'
+import { Route as AskRouteImport } from './routes/ask'
 import { Route as CampusRouteImport } from './routes/campus'
 import { Route as CompareRouteImport } from './routes/compare'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as DocumentsRouteImport } from './routes/documents'
 import { Route as FacultyRouteImport } from './routes/faculty'
 import { Route as GalleryRouteImport } from './routes/gallery'
 import { Route as IqacRouteImport } from './routes/iqac'
 import { Route as NoticesRouteImport } from './routes/notices'
 import { Route as StudentsRouteImport } from './routes/students'
+import { Route as SectionPageRouteImport } from './routes/$section.$page'
+import { Route as ApiAskRouteImport } from './routes/api/ask'
 import { Route as ProgrammesSlugRouteImport } from './routes/programmes.$slug'
+import { Route as ApiPublicDocRouteImport } from './routes/api/public/doc'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -67,6 +72,11 @@ const AlumniRoute = AlumniRouteImport.update({
   path: '/alumni',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AskRoute = AskRouteImport.update({
+  id: '/ask',
+  path: '/ask',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CampusRoute = CampusRouteImport.update({
   id: '/campus',
   path: '/campus',
@@ -80,6 +90,11 @@ const CompareRoute = CompareRouteImport.update({
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DocumentsRoute = DocumentsRouteImport.update({
+  id: '/documents',
+  path: '/documents',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FacultyRoute = FacultyRouteImport.update({
@@ -107,9 +122,24 @@ const StudentsRoute = StudentsRouteImport.update({
   path: '/students',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SectionPageRoute = SectionPageRouteImport.update({
+  id: '/$section/$page',
+  path: '/$section/$page',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiAskRoute = ApiAskRouteImport.update({
+  id: '/api/ask',
+  path: '/api/ask',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ProgrammesSlugRoute = ProgrammesSlugRouteImport.update({
   id: '/programmes/$slug',
   path: '/programmes/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiPublicDocRoute = ApiPublicDocRouteImport.update({
+  id: '/api/public/doc',
+  path: '/api/public/doc',
   getParentRoute: () => rootRouteImport,
 } as any)
 
@@ -122,15 +152,20 @@ export interface FileRoutesByFullPath {
   '/activities': typeof ActivitiesRoute
   '/admissions': typeof AdmissionsRoute
   '/alumni': typeof AlumniRoute
+  '/ask': typeof AskRoute
   '/campus': typeof CampusRoute
   '/compare': typeof CompareRoute
   '/contact': typeof ContactRoute
+  '/documents': typeof DocumentsRoute
   '/faculty': typeof FacultyRoute
   '/gallery': typeof GalleryRoute
   '/iqac': typeof IqacRoute
   '/notices': typeof NoticesRoute
   '/students': typeof StudentsRoute
+  '/$section/$page': typeof SectionPageRoute
+  '/api/ask': typeof ApiAskRoute
   '/programmes/$slug': typeof ProgrammesSlugRoute
+  '/api/public/doc': typeof ApiPublicDocRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -141,15 +176,20 @@ export interface FileRoutesByTo {
   '/activities': typeof ActivitiesRoute
   '/admissions': typeof AdmissionsRoute
   '/alumni': typeof AlumniRoute
+  '/ask': typeof AskRoute
   '/campus': typeof CampusRoute
   '/compare': typeof CompareRoute
   '/contact': typeof ContactRoute
+  '/documents': typeof DocumentsRoute
   '/faculty': typeof FacultyRoute
   '/gallery': typeof GalleryRoute
   '/iqac': typeof IqacRoute
   '/notices': typeof NoticesRoute
   '/students': typeof StudentsRoute
+  '/$section/$page': typeof SectionPageRoute
+  '/api/ask': typeof ApiAskRoute
   '/programmes/$slug': typeof ProgrammesSlugRoute
+  '/api/public/doc': typeof ApiPublicDocRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -161,15 +201,20 @@ export interface FileRoutesById {
   '/activities': typeof ActivitiesRoute
   '/admissions': typeof AdmissionsRoute
   '/alumni': typeof AlumniRoute
+  '/ask': typeof AskRoute
   '/campus': typeof CampusRoute
   '/compare': typeof CompareRoute
   '/contact': typeof ContactRoute
+  '/documents': typeof DocumentsRoute
   '/faculty': typeof FacultyRoute
   '/gallery': typeof GalleryRoute
   '/iqac': typeof IqacRoute
   '/notices': typeof NoticesRoute
   '/students': typeof StudentsRoute
+  '/$section/$page': typeof SectionPageRoute
+  '/api/ask': typeof ApiAskRoute
   '/programmes/$slug': typeof ProgrammesSlugRoute
+  '/api/public/doc': typeof ApiPublicDocRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -182,15 +227,20 @@ export interface FileRouteTypes {
     | '/activities'
     | '/admissions'
     | '/alumni'
+    | '/ask'
     | '/campus'
     | '/compare'
     | '/contact'
+    | '/documents'
     | '/faculty'
     | '/gallery'
     | '/iqac'
     | '/notices'
     | '/students'
+    | '/$section/$page'
+    | '/api/ask'
     | '/programmes/$slug'
+    | '/api/public/doc'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -201,15 +251,20 @@ export interface FileRouteTypes {
     | '/activities'
     | '/admissions'
     | '/alumni'
+    | '/ask'
     | '/campus'
     | '/compare'
     | '/contact'
+    | '/documents'
     | '/faculty'
     | '/gallery'
     | '/iqac'
     | '/notices'
     | '/students'
+    | '/$section/$page'
+    | '/api/ask'
     | '/programmes/$slug'
+    | '/api/public/doc'
   id:
     | '__root__'
     | '/'
@@ -220,15 +275,20 @@ export interface FileRouteTypes {
     | '/activities'
     | '/admissions'
     | '/alumni'
+    | '/ask'
     | '/campus'
     | '/compare'
     | '/contact'
+    | '/documents'
     | '/faculty'
     | '/gallery'
     | '/iqac'
     | '/notices'
     | '/students'
+    | '/$section/$page'
+    | '/api/ask'
     | '/programmes/$slug'
+    | '/api/public/doc'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -240,15 +300,20 @@ export interface RootRouteChildren {
   ActivitiesRoute: typeof ActivitiesRoute
   AdmissionsRoute: typeof AdmissionsRoute
   AlumniRoute: typeof AlumniRoute
+  AskRoute: typeof AskRoute
   CampusRoute: typeof CampusRoute
   CompareRoute: typeof CompareRoute
   ContactRoute: typeof ContactRoute
+  DocumentsRoute: typeof DocumentsRoute
   FacultyRoute: typeof FacultyRoute
   GalleryRoute: typeof GalleryRoute
   IqacRoute: typeof IqacRoute
   NoticesRoute: typeof NoticesRoute
   StudentsRoute: typeof StudentsRoute
+  SectionPageRoute: typeof SectionPageRoute
+  ApiAskRoute: typeof ApiAskRoute
   ProgrammesSlugRoute: typeof ProgrammesSlugRoute
+  ApiPublicDocRoute: typeof ApiPublicDocRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -309,6 +374,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AlumniRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/ask': {
+      id: '/ask'
+      path: '/ask'
+      fullPath: '/ask'
+      preLoaderRoute: typeof AskRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/campus': {
       id: '/campus'
       path: '/campus'
@@ -328,6 +400,13 @@ declare module '@tanstack/react-router' {
       path: '/contact'
       fullPath: '/contact'
       preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/documents': {
+      id: '/documents'
+      path: '/documents'
+      fullPath: '/documents'
+      preLoaderRoute: typeof DocumentsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/faculty': {
@@ -365,11 +444,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof StudentsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/$section/$page': {
+      id: '/$section/$page'
+      path: '/$section/$page'
+      fullPath: '/$section/$page'
+      preLoaderRoute: typeof SectionPageRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/ask': {
+      id: '/api/ask'
+      path: '/api/ask'
+      fullPath: '/api/ask'
+      preLoaderRoute: typeof ApiAskRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/programmes/$slug': {
       id: '/programmes/$slug'
       path: '/programmes/$slug'
       fullPath: '/programmes/$slug'
       preLoaderRoute: typeof ProgrammesSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/public/doc': {
+      id: '/api/public/doc'
+      path: '/api/public/doc'
+      fullPath: '/api/public/doc'
+      preLoaderRoute: typeof ApiPublicDocRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -384,15 +484,20 @@ const rootRouteChildren: RootRouteChildren = {
   ActivitiesRoute: ActivitiesRoute,
   AdmissionsRoute: AdmissionsRoute,
   AlumniRoute: AlumniRoute,
+  AskRoute: AskRoute,
   CampusRoute: CampusRoute,
   CompareRoute: CompareRoute,
   ContactRoute: ContactRoute,
+  DocumentsRoute: DocumentsRoute,
   FacultyRoute: FacultyRoute,
   GalleryRoute: GalleryRoute,
   IqacRoute: IqacRoute,
   NoticesRoute: NoticesRoute,
   StudentsRoute: StudentsRoute,
+  SectionPageRoute: SectionPageRoute,
+  ApiAskRoute: ApiAskRoute,
   ProgrammesSlugRoute: ProgrammesSlugRoute,
+  ApiPublicDocRoute: ApiPublicDocRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
