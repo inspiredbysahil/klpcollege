@@ -1,0 +1,152 @@
+{
+  "version": 1,
+  "sdk_version": "3.0.4",
+  "path": "/mcp",
+  "auth": {
+    "type": "none"
+  },
+  "mcp": {
+    "server": {
+      "name": "klp-college-elevate",
+      "version": "0.1.0",
+      "title": "KLP College Elevate"
+    },
+    "tools": [
+      {
+        "name": "get_college_info",
+        "title": "Get college information",
+        "description": "Return Kishan Lal Public College's verified address, contact details, affiliation and application portal.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "type": "object",
+          "properties": {},
+          "additionalProperties": false
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "list_programmes",
+        "title": "List degree programmes",
+        "description": "List the college's degree programmes, optionally filtered by level, with links to each programme page.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "type": "object",
+          "properties": {
+            "level": {
+              "description": "Only return programmes at this level.",
+              "type": "string",
+              "enum": [
+                "Undergraduate",
+                "Postgraduate"
+              ]
+            }
+          },
+          "additionalProperties": false
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "list_notices",
+        "title": "List latest notices",
+        "description": "List the college's latest published notices, optionally filtered by category.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "type": "object",
+          "properties": {
+            "category": {
+              "description": "Notice category to filter by.",
+              "type": "string",
+              "enum": [
+                "Admission",
+                "Examination",
+                "Campus",
+                "Notice"
+              ]
+            }
+          },
+          "additionalProperties": false
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "search_college_pages",
+        "title": "Search college pages",
+        "description": "Search the copied official college pages (admissions, staff, syllabus, IQAC and more) by keyword.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "minLength": 2,
+              "description": "Words to search for."
+            },
+            "limit": {
+              "description": "Maximum results, default 5.",
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 10
+            }
+          },
+          "required": [
+            "query"
+          ],
+          "additionalProperties": false
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "get_college_page",
+        "title": "Get college page",
+        "description": "Return the full text and documents of one copied official college page by section and slug.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "type": "object",
+          "properties": {
+            "section": {
+              "type": "string",
+              "minLength": 1,
+              "description": "Page section, e.g. 'students'."
+            },
+            "slug": {
+              "type": "string",
+              "minLength": 1,
+              "description": "Page slug, e.g. 'admission-2026-27'."
+            }
+          },
+          "required": [
+            "section",
+            "slug"
+          ],
+          "additionalProperties": false
+        },
+        "outputSchema": null
+      }
+    ]
+  }
+}
